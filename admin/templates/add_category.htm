@@ -59,6 +59,15 @@ foreach ($cats AS $cat)
 <tr>
   <td align="right">信息页模板： </td>
   <td><?=$viewtplname?> 增加模板要以view-开头，例：view-test.htm</td>
+</tr>
+<tr>
+  <td align="right">是否需要付费浏览： </td>
+  <td>
+		<select name="needPay">
+			<option value="0">不需要付费</option>
+			<option value="1">需要付费</option>
+		</select>
+</td>
 </tr>
 <tr>
   <td align="right">关键词(keywords)： </td>

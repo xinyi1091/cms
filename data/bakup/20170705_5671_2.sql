@@ -16383,3 +16383,4 @@ INSERT INTO zj_ver VALUES('1','35+48=','83');
 INSERT INTO zj_ver VALUES('2','72-37=','35');
 INSERT INTO zj_ver VALUES('3','18+25=','43');
 
+alter table `zj_category` add needPay int(4) default '0';
