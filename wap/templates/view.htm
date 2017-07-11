@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><?=encode_output($seo['title'])?></title> 
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable"> 
+<meta content="black" name="apple-mobile-web-app-status-bar-style"> 
+<meta content="telephone=no" name="format-detection"> 
+<link rel="stylesheet" href="css/common.css">
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/modernizr.custom.js"></script>
+<script src="js/jquery.dlmenu.js"></script>
+</head>
+<body>
+<div id="main_body"  class="loading">
+<header class="s_header"  id="header">
+<nav>
+<span class="navt qq"><?=encode_output($seo['title'])?></span>
+<span class="userspan"></span>
+</nav>
+<div id="dl-menu" class="dl-menuwrapper">
+<button id="dl-menu-button">Open Menu</button>
+<ul class="dl-menu">
+<li><a href="./" class="r">手机首页</a></li>
+<?php foreach($cats44 as $cat){ 
+echo " <li><a href=\"category.php?id=$cat[catid]\" class=\"r\">".encode_output($cat[catname])."</a></li>";
+}?></ul></div>
+<script>
+$(function() {
+$( '#dl-menu' ).dlmenu();
+});
+
+</script><!-- 响应式菜单 结束 -->
+</header>
+<nav class="s_nav">
+<section id="jt">
+<div id="nav">
+<ul><li><a href="./" class="r">手机首页</a></li>
+<li><a href="article.php">站务公告</a></li>
+<!-- <li><a href="com.php">商家黄页</a></li> -->
+<li><a href="post.php">发布信息</a></li>
+</ul>
+</div>
+</section>
+</nav>
+<?  
+if($custom) {
+	foreach($custom as $val) {
+		echo encode_output($val['name'])."：".encode_output($val['value'])."&nbsp;&nbsp;".encode_output($val['unit'])."<br>";
+	}
+}
+?>
+</div>
+<section class="s_hdp"><a href="#" class="s_hdp-t"><?=encode_output($title)?></a></section>
+<section class="s_moreread"><div class="module-t"><h3>详细信息</h3><span class="more">阅读：<?=$click?></span></div>
+<div class="list_box">
+<dl><dd style="height:auto;">
+<?php echo encode_output($content); ?><br />
+<div class="con_con">
+<?if($images) {?>
+<?php foreach($images as $images){ 
+?>
+
+<img src="<?php echo PHPMPS_PATH;?>/<?php echo $images[path];?>">
+
+<?php
+}
+?>
+<?php
+}
+?>
+</div>
+
+</dd></dl>
+</div>
+</section>
+<div class="module module-margin">
+<div class="topic">
+<ul class="cont-list"><li><span class="live-icon">所属行业:</span><a href=""><?php echo encode_output($catname); ?></a></li></ul>
+<ul class="cont-list"><li><span class="live-icon">联 系 人:</span><?=encode_output($linkman)?></li></ul>
+<?if($phone) {?>
+<ul class="cont-list"><li><span class="live-icon">联系电话:</span><a href="tel:<?=$phone?>"><font color="#CC0000"><b><?=$phone?></b></font></a><font color="#999999">（点击号码即可拨打）</font></li></ul>
+<?}?>
+<?if($qq) {?>
+<ul class="cont-list"><li><span class="live-icon">联系 QQ:</span><font color="#CC0000"><b><?=$qq?></b></font></li></ul>
+<?}?>
+<ul class="cont-list"><li><span class="live-icon">发布时间:</span><?=$postdate?></li></ul>
+</div>
+
+
+
+<footer class="footer">
+	<a href="#header" class="back_top"><span></span>返回顶部</a>
+	<a href="">触屏版</a>
+	<a href="../">电脑版</a>
+</footer>	
+</div>
+</body>
+</html>
+
+
+
+
+
+

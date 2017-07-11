@@ -1,0 +1,556 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+
+<meta name="pragma" content="no-cache" />
+
+<meta name="document-class" content="Completed" />
+
+<meta name="cache-control" content="Private" />
+
+<title>管理菜单</title>
+
+<style>
+
+body {
+
+	background:#404040; margin:5px; padding:5px;
+
+SCROLLBAR-FACE-COLOR: #FFAB55; 
+
+SCROLLBAR-HIGHLIGHT-COLOR: #FFAB55; 
+
+SCROLLBAR-SHADOW-COLOR: #FFAB55; 
+
+SCROLLBAR-3DLIGHT-COLOR: #FFAB55; 
+
+SCROLLBAR-ARROW-COLOR: #FFAB55; 
+
+SCROLLBAR-TRACK-COLOR: #FFEC8E; 
+
+SCROLLBAR-DARKSHADOW-COLOR: #FFAB55 ;/*整个网页的背景颜色*/
+
+}
+
+/*.tit为每个菜单的标题样式  .list 为菜单项目的样式*/
+
+.tit , .list{ width:183px; /*菜单的宽度*/
+
+} 
+
+.dhdhda{ width:100%; }
+
+.dhdhda a{
+
+color: #ffffff;
+
+text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+
+background-color: #bd362f;
+
+background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+
+background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+
+background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+
+background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+
+background-repeat: repeat-x;
+
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+
+filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+
+border-top-color: #fcb6b4;
+
+border-bottom-color: #802420;
+
+ padding:20px;}
+
+
+
+/*==标题部分==*/
+
+.tit {/*菜单标题的样式*/
+
+min-height: 30px; line-height:30px; padding-left:2px; text-indent:2em;
+
+background-color: #2f96b4;
+
+background-image: -moz-linear-gradient(top, #52b2cf, #2f96b4);
+
+background-image: -webkit-gradient(linear, 0 0, 0 96%, from(#52b2cf), to(#2f96b4));
+
+background-image: -webkit-linear-gradient(top, #52b2cf, #2f96b4);
+
+background-image: -o-linear-gradient(top, #52b2cf, #2f96b4);
+
+background-image: linear-gradient(to bottom, #52b2cf, #2f96b4);
+
+background-repeat: repeat-x;
+
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff52b2cf', endColorstr='#ff2f96b4', GradientType=0);
+
+filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); font-size:14px;
+
+	position: relative;	
+
+}
+
+.tit a ,.tit a:link , .tit a hover{/*菜单标题中的链接的样式，共同的部分*/
+
+	color: #fff;
+
+	display:block;
+
+	text-decoration:none;
+
+	width:183px;font: bold 16px "Microsoft Yahei",sans-serif;
+
+	background-repeat: no-repeat;
+
+	background-position: 166px 10px;
+
+	cursor: pointer; line-height:35px; height:35px;
+
+}
+
+.tit a:hover{
+
+	color: #fff;/*鼠标经过时的颜色*/
+
+}
+
+/*====================
+
+	菜单标题中的箭头图片
+
+======================*/
+
+.left_top{ width: 185px; background: url(images/left_top.png) no-repeat -4px 0px #fff; height: 62px; padding-bottom: 2px;}
+
+.on{
+
+	background-image: url(images/arrow_up.gif);/*向上的箭头-暗色*/
+
+}
+
+.on:hover{
+
+	background-image: url(images/arrow_up_o.gif);/*向上的箭头-亮色*/
+
+}
+
+.off{
+
+	background-image: url(images/arrow_down.gif);/*向下的箭头-暗色*/
+
+}
+
+.off:hover{
+
+	background-image: url(images/arrow_down_o.gif);/*向下的箭头-亮色*/
+
+}
+
+/*标题图标样式*/
+
+.titpic {
+
+	position: absolute;
+
+	height: 32px;
+
+	width: 32px;
+
+	left: 0px;
+
+	bottom: 0px;
+
+}
+
+
+
+/*===菜单体部分===*/
+
+/*====================
+
+	菜单列表的样式
+
+======================*/
+
+.list{
+
+	font-size: 12px;
+
+	color: #002280;
+
+	background: #fff no-repeat right bottom;
+
+	width: 213px;/*宽度*/
+
+	border: 1px solid #fff;
+
+	text-align:left;
+
+	padding:10px 10px;
+
+	voice-family:"\"}\"";
+
+	voice-family:inherit;
+
+	width:173px;
+
+	overflow:hidden;
+
+}
+
+html>body .list {
+
+width:163px;
+
+}
+
+.list ul{
+
+list-style-type:none;
+
+margin:0;
+
+padding:0;
+
+padding-left:4px;
+
+}
+
+.list li{
+
+margin:0;
+
+padding:0;
+
+padding-left:2px;
+
+line-height:25px;
+
+}
+
+/*============
+
+菜单链接的样式
+
+==============*/
+
+.list a{
+
+color:#404040;
+
+text-decoration:none; font-size:12px; margin-right:6px;margin-left:0px;
+
+}
+
+.list a:link{
+
+color:#303030;
+
+}
+
+.list a:hover{
+
+color:#296DC1;
+
+text-decoration:underline;
+
+}
+
+.list a:active{
+
+color:#296DC1;
+
+}
+
+</style>
+
+
+
+<script language="JavaScript" type="text/javascript" src="js/menu.js"></script>
+
+<script language="JavaScript" type="text/JavaScript">
+
+var show = true;
+
+var hide = false;
+
+//修改菜单的上下箭头符号
+
+function my_on(head,body)
+
+{
+
+	var tag_a;
+
+	for(var i=0;i<head.childNodes.length;i++)
+
+	{
+
+		if (head.childNodes[i].nodeName=="A")
+
+		{
+
+			tag_a=head.childNodes[i];
+
+			break;
+
+		}
+
+	}
+
+	tag_a.className="on";
+
+}
+
+function my_off(head,body)
+
+{
+
+	var tag_a;
+
+	for(var i=0;i<head.childNodes.length;i++)
+
+	{
+
+		if (head.childNodes[i].nodeName=="A")
+
+		{
+
+			tag_a=head.childNodes[i];
+
+			break;
+
+		}
+
+	}
+
+	tag_a.className="off";
+
+}
+
+//添加菜单	
+
+window.onload=function()
+
+{
+
+	m1 =new Menu("menu1",'menu1_child','dtu','100',show,my_on,my_off);
+
+	m1.init();
+
+	m2 =new Menu("menu2",'menu2_child','dtu','100',show,my_on,my_off);
+
+	m2.init();
+
+	m3 =new Menu("menu3",'menu3_child','dtu','100',show,my_on,my_off);
+
+	m3.init();
+
+	m4 =new Menu("menu4",'menu4_child','dtu','100',hide,my_on,my_off);
+
+	m4.init();
+
+	m5 =new Menu("menu5",'menu5_child','dtu','100',hide,my_on,my_off);
+
+	m5.init();
+
+	m6 =new Menu("menu6",'menu6_child','dtu','100',hide,my_on,my_off);
+
+	m6.init();
+
+	m7 =new Menu("menu7",'menu7_child','dtu','100',hide,my_on,my_off);
+
+	m7.init();
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+
+<noscript title="系统提示">
+
+<div class="tit" id="menu0" ><a href="" class="on"  name="nojs" id="nojs" >系统提示</a> </div>
+
+<div class="list" id="menu0_child">
+
+	<p><strong>您的设备不支持js,不能使用折叠功能</strong></p>
+
+</div>
+
+</noscript>
+
+<div id="menu">
+
+<div class="left_top"></div>
+
+	<div class="tit" id="menu1" title="菜单标题">
+
+		<div class="titpic" id="pc1"></div>
+
+		<a href="#nojs" target="" class="on" id="menu1_a" tabindex="1" >管理员信息</a> </div>
+
+	<div class="list" id="menu1_child"  >
+
+		<ul>
+
+			<li id="m1_1" >欢迎您：<?=$_SESSION['adminname']?></li>
+
+			<li id="m1_2" ><a href="../index.php" target="_blank">前台首页</a>|<a href="index.php" target="_top">后台首页</a></li>
+
+            <li id="m1_3"><a href="database.php?act=importdata" target="right">数据恢复</a>|<a href="database.php?act=exportdata" target="right">数据备份</a></li>
+
+            <li id="m1_4" ><a href="admin.php?act=modify" target="right">密码修改</a>|<a href="logout.php" target="_top">安全退出</a></li>
+
+		</ul>
+
+	</div>
+
+	<div class="tit" id="menu2" >
+
+		<div class="titpic" id="pc2"></div>
+
+		<a href="#nojs" target="" class="on" id="menu2_a" tabindex="2">系统基本设置</a></div>
+
+	<div class="list" id="menu2_child" >
+
+		<ul>
+
+<li id="m2_1" ><a href="set_config.php" target="right">系统设置</a>&nbsp;|&nbsp;<a href="admin_log.php" target="right">操作日志</a></li>
+
+			<li id="m2_2" ><a href="nav.php" target="right">导航管理</a>&nbsp;|&nbsp;<a href="flash.php" target="right">首页幻灯广告</a></li>
+
+			<li id="m2_3" ><a href="index.php?act=clear_caches" target="right">清除缓存</a>&nbsp;|&nbsp;<a href="sitemap.php" target="right">sitemap生成</a></li>
+
+			<li id="m2_4" ><a href="index.php?act=phpinfo" target="right">系统探针</a>&nbsp;|&nbsp;<a href="admin.php" target="right">管理员管理</a></li>
+
+			<li id="m2_5" ><a href="ver.php" target="right">验证码问答</a>&nbsp;|&nbsp;<a href="set_map.php" target="right">地图设置</a></li>
+
+		</ul>
+
+	</div>
+
+	<div class="tit" id="menu3" >
+
+		<div class="titpic" id="pc3"></div>
+
+		<a href="" target="" class="on" id="menu3_a" tabindex="3">信息管理</a> </div>
+
+	<div class="list" id="menu3_child" >
+
+		<ul>
+
+			<li id="m3_1" ><a href="category.php" target="right">分类管理</a>&nbsp;|&nbsp;<a href="area.php" target="right">地区管理</a></li>
+
+			<li id="m3_2" ><a href="info.php" target="right">信息管理</a>&nbsp;|&nbsp;<a href="comment.php" target="right">评论管理</a></li>
+
+			<li id="m3_3" ><a href="custom.php" target="right">信息属性</a>&nbsp;|&nbsp;<a href="report.php" target="right">举报管理</a></li>
+
+		</ul>
+
+	</div>
+
+	<!-- <div class="tit" id="menu4" >
+	
+		<div class="titpic" id="pc4"></div>
+	
+		<a href="" target="" class="on" id="menu4_a" tabindex="4">商家黄页管理</a> </div>
+	
+	<div class="list" id="menu4_child" >
+	
+		<ul>
+	
+	<li id="m4_1" ><a href="com.php" target="right">商家管理</a>&nbsp;|&nbsp;<a href="comcat.php" target="right">商家分类管理</a></li>	
+	
+		</ul>
+	
+	</div> -->
+
+	<div class="tit" id="menu5" >
+
+		<div class="titpic" id="pc5"></div>
+
+		<a href="" target="" class="on" id="menu5_a" tabindex="5">新闻资讯管理</a> </div>
+
+	<div class="list" id="menu5_child" >
+
+		<ul>
+
+			<li id="m5_1" ><a href="article.php" target="right">资讯文章管理</a>&nbsp;|&nbsp;<a href="article.php?act=add" target="right">添加文章</a></li>
+
+			<li id="m5_2" ><a href="type.php?module=article" target="right">文章分类管理</a>&nbsp;|&nbsp;<a href="type.php?act=add&module=article" target="right">添加分类</a></li>
+
+		</ul>
+
+	</div>
+
+	<!-- <div class="tit" id="menu6" >
+	
+		<div class="titpic" id="pc6"></div>
+	
+		<a href="" class="on" id="menu6_a" tabindex="6">交易管理</a> </div>
+	
+	<div class="list" id="menu6_child" >
+	
+		<ul>
+	
+			<li id="m6_1" ><a href="payonline.php?act=setting" target="right">在线支付设置</a>&nbsp;|&nbsp;<a href="payonline.php?act=list" target="right">支付记录</a></li>
+	
+			<li id="m6_1" ><a href="pay.php" target="right">财务流水</a>&nbsp;|&nbsp;<a href="pay.php?act=add" target="right">添加财务</a></li>
+	
+			<li id="m6_1" ><a href="exchange.php" target="right">交易记录</a>&nbsp;|&nbsp;</li>
+	
+		</ul>
+	
+	</div> -->
+
+
+
+	<div class="tit" id="menu7" >
+
+		<div class="titpic" id="pc7"></div>
+
+		<a href="" class="on" id="menu7_a" tabindex="6">其他管理</a> </div>
+
+	<div class="list" id="menu7_child" >
+
+		<ul id="auth" >
+
+			<li><a href="member.php" target="right">会员管理</a>&nbsp;|&nbsp;<a href="fac.php" target="right">便民管理</a></li>
+
+			<li><a href="link.php" target="right">链接管理</a>&nbsp;|&nbsp;<a href="about.php" target="right">单页管理</a></li>
+
+			<li><a href="ads.php" target="right">广告管理</a>&nbsp;|&nbsp;<a href="ads_place.php" target="right">广告位管理</a></li>
+
+			<li><a href="replace.php" target="right">字符替换</a>&nbsp;|&nbsp;<a href="database.php" target="right">数据库管理</a></li>
+
+			<li><a href="help.php" target="right">网站帮助</a>&nbsp;|&nbsp;<a href="type.php?module=help" target="right">帮助类型</a></li>
+
+		</ul>
+
+	</div>
+
+</div>
+
+</body>
+
+</html>
+

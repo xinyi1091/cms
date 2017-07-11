@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><?=encode_output($seo['title'])?></title> 
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable"> 
+<meta content="black" name="apple-mobile-web-app-status-bar-style"> 
+<meta content="telephone=no" name="format-detection"> 
+<link rel="stylesheet" href="css/common.css">
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/modernizr.custom.js"></script>
+<script src="js/jquery.dlmenu.js"></script>
+</head>
+<body>
+<div id="main_body"  class="loading">
+<header class="s_header"  id="header">
+<nav>
+<span class="navt qq"><?=encode_output($seo['title'])?></span>
+<span class="userspan"></span>
+</nav>
+<div id="dl-menu" class="dl-menuwrapper">
+<button id="dl-menu-button">Open Menu</button>
+<ul class="dl-menu">
+<li><a href="./" class="r">手机首页</a></li>
+<?php foreach($cats as $cat){ 
+echo " <li><a href=\"category.php?id=$cat[catid]\" class=\"r\">".encode_output($cat[catname])."</a></li>";
+}?></ul></div>
+<script>
+$(function() {
+$( '#dl-menu' ).dlmenu();
+});
+
+</script><!-- 响应式菜单 结束 -->
+</header>
+<nav class="s_nav">
+<section id="jt">
+<div id="nav">
+<ul><li><a href="./" class="r">手机首页</a></li>
+<li><a href="article.php">站务公告</a></li>
+<!-- <li><a href="com.php">商家黄页</a></li> -->
+<li><a href="post.php">发布信息</a></li>
+</ul>
+</div>
+</section>
+</nav>
+<script src="js/tabbedContent.js" type="text/javascript"></script>
+<div class='tabbed_content'>
+<div class='tabs'><div class='moving_bg'>&nbsp;</div><span class='tab_item'>最新信息</span><span class='tab_item'>站务公告</span><!-- <span class='tab_item'>商家信息</span> --></div>
+<div class='slide_content'><div class='tabslider'>
+<ul>
+<div id="content">
+ <dt id="entry-list" style="display: block;">
+<? 
+if($new_info) {
+	foreach($new_info as $val) {
+		echo "<dl><h3 class=\"title\"><a href=\"view.php?id=$val[id]\">".encode_output($val[title])."</a></h3><h4 class=\"updated\"></h4><div class=\"description\">[".encode_output($val[description])."]</div><div class=\"actions\"><a href=\"tel:$val[phone]\" class=\"link3\"><font color=#111111><b>".encode_output($val[phone])."</b></font></a><span><font color=#ff8800>".encode_output($val[areaname])."</font></span><span><font color=#009933>".encode_output($val[catname])."</font></span><span class=\"goto-top\">".encode_output($val[postdate])."</span></div></dl>";
+	}
+}
+?>       
+ </dt></div>  
+
+</ul>
+<ul>
+<div id="content">
+ <dt id="entry-list" style="display: block;">
+<? 
+if($articles) {
+	foreach($articles as $val) {
+		echo "<dl><h3 class=\"title\"><a href=\"article_view.php?id=$val[id]\">".encode_output($val[title])."</a></h3><h4 class=\"updated\"></h4><div class=\"description\">[".encode_output($val[description])."]</div><div class=\"actions2\"><a href=\"tel:$val[phone]\" class=\"link3\"><font color=#111111><b>".encode_output($val[phone])."</b></font></a><span><font color=#ff8800>".encode_output($val[areaname])."</font></span><span><font color=#009933>".encode_output($val[catname])."</font></span><span class=\"goto-top\">".encode_output($val[pdate2])."</span></div></dl>";
+	}
+}
+?>       
+ </dt></div>  
+
+</ul>
+<ul>
+<div id="content">
+<dt id="entry-list" style="display: block;">
+<? 
+if($coms) {
+	foreach($coms as $val) {
+		echo "<dl><h3 class=\"title\"><a href=\"com_view.php?id=$val[comid]\">".encode_output($val[sname])."</a><span>".encode_output($val[postdate])."</span></h3><h4 class=\"updated\"></h4><div class=\"description\">[".encode_output($val[description])."]</div><div class=\"actions\"><a href=\"tel:$val[phone]\" class=\"link3\"><font color=#111111><b>".encode_output($val[phone])."</b></font></a><span><font color=#ff8800>".encode_output($val[areaname])."</font></span><span><font color=#009933>".encode_output($val[address])."</font></span></div></dl>";
+	}
+}
+?>       
+ </dt></div>  
+
+</ul>
+</div>
+<br style='clear: both' />
+</div>
+</div>
+<footer class="footer">
+	<a href="#header" class="back_top"><span></span>返回顶部</a>
+	<a href="">触屏版</a>
+	<a href="../">电脑版</a>
+</footer>	
+</div>
+</body>
+</html>

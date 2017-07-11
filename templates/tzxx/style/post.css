@@ -1,0 +1,168 @@
+.red_skin { color:#f00!important;}
+.thd { font-size:14px; font-weight:bold; color:#333; line-height:33px; border-bottom:#017ec2 3px solid; padding-bottom:15px; padding-top:5px;}
+.thd b,.thd span { float:left; display:block;}
+.thd b { width:300px; text-align:right;}
+.thd span { width:156px; background:url(../images/bg5.jpg) no-repeat 0 0; height:33px; color:#a4a4a4;text-align:center;}
+.thd span.current { width:158px; background:url(../images/bg1.jpg) no-repeat 0 0; color:#fff;}
+.fbd { margin:10px 0 0 0; padding:15px;}
+.tips { border:1px solid #ffc686; background:#f8f5da; text-align:left; padding:10px; width:1100px; margin:0 auto; line-height:20px;}
+
+.infoxookee { width:950px; padding:0px; margin-left:auto; margin-right:auto; margin-top:20px;}
+.infoxookee ul { width:940px; padding:0px; margin:0px; border-bottom-width: 1px; border-bottom-color: #CCCCCC; }
+.infobt{margin-top:15px;text-align:left;font-weight:bold; color:#333;line-height:30px; font-size:16px;}
+.infoxookee li{width:156px; float:left;text-align:left; padding:0px; font-size:14px;line-height:30px;}
+.infoxookee li a:link {color: #0000CC;text-decoration: none; font-family:Arial, Helvetica, sans-serif; padding:4px;}
+.infoxookee li a:visited {color: #333333;text-decoration: none;}
+.infoxookee li a:hover {color: #FFf;text-decoration: none; background:#039;}
+.infoxookee li a:active {color: #FF0000;text-decoration: none;}
+.fabuinput {
+vertical-align: middle;
+border: 1px solid #dbdbdb;
+border-color: #c0c0c0 #e1e1e1 #e1e1e1 #c0c0c0;
+height: 20px;
+background: #fbfbfb;
+padding: 5px;
+font-size: 14px;
+width: 270px;margin-right:12px;
+}
+.sfabuinput {
+vertical-align: middle;
+border: 1px solid #dbdbdb;
+border-color: #c0c0c0 #e1e1e1 #e1e1e1 #c0c0c0;
+height: 20px;
+background: #fbfbfb;
+padding: 5px;
+font-size: 14px;
+width: 80px; margin-right:12px;
+}
+.textInt23{vertical-align: middle;
+border: 1px solid #dbdbdb;
+border-color: #c0c0c0 #e1e1e1 #e1e1e1 #c0c0c0;
+background: #fbfbfb;padding: 5px;}
+.fabuselect {
+vertical-align: middle;
+border: 1px solid #dbdbdb;
+border-color: #c0c0c0 #e1e1e1 #e1e1e1 #c0c0c0;
+background: #fbfbfb;
+padding: 5px;
+font-size: 14px;
+width: 270px;margin-right:12px;
+}
+.info { width:750px; margin:0 auto;}
+.info li { width:185px; float:left; text-align:left; padding:15px 0; font-size:14px; line-height:24px; border-bottom: 1px solid #e4edf4; }
+.info li h3 { font-weight:bold; color:#333;}
+.info li a { color:#000099; text-decoration:underline;}
+.info li a:hover { color:#f00;}
+.fbd .pic { float:left; width:300px; text-align:right;}
+.fbd .text { float:left; text-align:left; font-size:14px; margin-top:4px;}
+.fbd .text p { margin-bottom:15px; line-height:24px;}
+.fbd .text p b { color:#333;}
+.fbd .text p a { color:#003399; text-decoration:underline;}
+.fbd .text p a:hover { color:#f30;}
+
+.edit_box { text-align:left; background-color:#fff;}
+.edit_box li { clear:both; font-size:14px; padding:10px 0; line-height:22px; color:#333; zoom:1; overflow:hidden;}
+.edit_box li span.span_1 { display:block; float:left; text-align:right; width:140px; font-size:14px; font-weight:bold; color:#000; margin-right:20px;}
+.edit_box li span.span_2 { display:block; float:left;}
+.edit_box li span.red_skin { font-size:20px; color:#ff0000;}
+.edit_box li a { text-decoration:underline;}
+.edit_box li input,.edit_box li select { font-size:12px;}
+.edit_box li input.textInt { border:1px solid #a7a6aa; height:22px; line-height:20px; color:#333; font-size:12px;}
+.edit_box li input.button { height:28px; width:50px; line-height:20px; font-size:14px;}
+
+.pingbut:hover, a.fabubut2:hover {
+background:#f80;
+}
+.pingbut{
+width: 100px;
+height: 26px; color:#FFF;
+background:#0194e4;
+border: 0; font-size:14px; font-weight:bold;
+margin:0 12px;
+text-align: center;
+cursor: pointer;
+display: inline-block;border-radius:3px;
+}
+.fabutxt {
+vertical-align: middle;
+border: 1px solid #dbdbdb;
+border-color: #c0c0c0 #e1e1e1 #e1e1e1 #c0c0c0;
+background: #fbfbfb;
+padding: 5px;
+font-size: 14px;
+width: 700px;
+height: 200px;
+}
+.okbut:hover, a.fabubut2:hover {
+background:#f20;
+}
+.okbut{
+width: 300px;
+height: 46px; color:#FFF;
+background:#f80;
+border: 0; font-size:18px;
+font-weight:bold;
+margin:0 12px;
+text-align: center;
+cursor: pointer;
+display: inline-block;border-radius:3px;
+}
+
+
+
+
+select {
+padding: 3px;
+border: 1px solid #ddd;
+}
+.input {
+	height: 28px;
+	line-height: 28px;
+	background: url(../images/input_bg_1.gif) repeat-x;
+	font-size: 12px;
+	border: 1px solid #bbb;
+	padding: 0 5px;
+	}
+
+
+
+
+
+
+
+#content {
+	border:1px solid #ccc;
+	background:#fff;
+	padding:10px;
+	text-align:left;
+	}
+.step{font-size:14px;color:#454545;width:936px;margin:0 auto;padding-top:10px;padding-bottom:20px;}
+.step ul{overflow:hidden;zoom:1;}
+.step ul li{height:30px;line-height:30px;width:312px;float:left;}
+.step .l_bg,.step .r_bg{display:block;width:10px;height:30px;background:url(../images/process.png) 0 0 scroll no-repeat}
+.step .text{display:block;width:292px;text-align:center;float:left;background:url(../images/process.png) 0 -195px scroll repeat-x}
+.step .text a { color:#1155CC}
+.step  .l_bg{float:left;background-position:0 -156px;}
+.step  .r_bg{float:right;background-position:0 -119px;}
+.step  .active .text{background-position:0 0;color:#fff;font-weight:bold}
+#onestep .l_bg,#threestep .r_bg{background-position:0 -195px;}
+#onestep.active .l_bg,#threestep.active .r_bg{background-position:0 0;}
+#onestep.active .r_bg,#twostep.active .r_bg{background-position:0 -41px;}
+#twostep.active .l_bg,#threestep.active .l_bg{background-position:0 -78px;}
+
+.cate-bd{margin:20px 0}
+.cate-bd .title{height:40px;background:#f9f9f9;line-height:40px;padding-left:15px;font-weight:bold;color:#666}
+.content ul.cats{padding:20px 0px;font-size:14px;color:#454545;overflow:hidden;zoom:1}
+.content ul.cats a{color:#454545;padding:5px;}
+.content ul.cats a:hover{color:#fff;background-color:#007CC4;}
+.content ul.cats li{width:167px;height:35px;line-height:35px;float:left;padding-left:20px}
+.content ul.cats li.select{background:url(../images/select.gif) 2px 10px no-repeat}
+
+#father ul.cats li {
+	width:105px;
+	}
+
+.cate-bd .chi-hid{display:none}
+.cate-bd .chi-show{display:block}
+
+

@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+<title>{$seo['title']}</title>
+<meta name="Keywords" content="{$seo['keywords']}">
+<meta name="Description" content="{$seo['description']}">
+<link href="templates/{$CFG[tplname]}/style/reset.css" type="text/css" rel="stylesheet" />
+<link href="templates/{$CFG[tplname]}/style/style.css" type="text/css" rel="stylesheet" />
+<link href="templates/{$CFG[tplname]}/style/category.css" type="text/css" rel="stylesheet" />
+<script src="js/common.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script> 
+<script type="text/javascript" charset="utf-8">
+		$(function() {
+			$("img").lazyload({
+				effect : "fadeIn"
+			});
+		});
+	</script>
+
+</head>
+<body class="home-page">
+<!--{template header}-->
+<div class="wrapper">
+	<!-- 主体 -->
+<div id="content">
+<div class="m_title_h"><div class="dh_list"><b>最新信息</b><span>{template here}</span></div></div>
+ <table width="100%" border="0" cellspacing="0" cellpadding="0" align="left" style="margin-top:10px;">
+  <tbody>{if $cat_arr || $area_arr}
+                    {if $cat_arr}
+                    <tr >
+					<td></td><td width="50" valign="top"><div class="city_dh_list2"><em>分类</em></div></td>
+					<td>
+                    <div class="city_dh_list">
+					<ul><!--{loop $cat_arr $val}--><li>
+						<a href={$val[url]}> {$val[catname]}</a>&nbsp;
+						</li><!--{/loop}--></ul></div>
+					</td>
+					</tr>
+                    {/if}
+                    
+                    {if $area_arr}
+                    <tr>
+					<td></td><td width="50" valign="top"><div class="city_dh_list2"><em>地区</em></div></td>
+					<td>
+                    <div class="city_dh_list">
+					<ul><!--{loop $area_arr $val}--><li>
+							<a href={$val[url]}> {$val[areaname]}</a>&nbsp;
+						</li><!--{/loop}--></ul></div>
+					</td>
+					</tr>
+                    {/if}
+                    {/if}
+					
+  	<tr><td></td><td width="50" valign="top"><div class="city_dh_list2"><em>搜索</em></div></td>
+		<td align="left"><div class="city_dh_list3" >
+<form method="get" name="lbform" id="lbform" onsubmit="return searchCommunity(this);" style="padding-left:30px;">
+<input type="text" class="ssinput" id="search_kw" value="请输入小区名搜索" name="q" onfocus="if(value=='请输入小区名搜索'){value='';style.color='#000';}this.select();" style="color:#999" autocomplete="off">
+								<input id="searchbtn" type="submit" class="redBtn" value="本类搜索">
+							</form></div></td>
+					</tr>
+  
+  
+  
+</tbody></table>
+<div style=" clear:both"></div>
+<div id="cat_content" class="clearfix">
+<ul id="listul">  
+{loop $top_info $article}   
+<li class="jianbg3">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+<tr>
+<td width="9%" rowspan="2" height="65" align="center" valign="middle">{if $article[thumb]}<img data-original="{$article[thumb]}" src="js/grey.gif" style="width:60px;height:60px; border-radius:5%; border:#fff 3px solid" alt="{$article[title]}">
+{else}<img  data-original="templates/{$CFG[tplname]}/images/nosmall.gif" src="js/grey.gif" style="width:60px;height:60px; border-radius:5%; border:#fff 3px solid" alt="{$article[title]}">
+{/if}</td>
+    <td width="72%" height="30"><font color="#ff0000">[置顶]&nbsp;&nbsp;</font><a href="{$article[url]}" target="_blank">{$article[title]}</a>&nbsp;&nbsp;<font color="#ff5500" style="font-size:12px;">{$article[areaname]}</font>&nbsp;&nbsp;<font color="#007700">{$article[catname]}</font></td>
+<td width="10%" align="center"><span style="color:#f80;font-size:12px;">{$article[postdate]}</span></td>
+<td width="9%" align="center"><span style="color:#888;font-size:12px; padding-right:12px;">点击：{$article[click]}</span></td>
+   
+  </tr>
+  <tr>
+    <td colspan="3" valign="top" height="35"><div style=" line-height:140%; font-size:12px; color:#999; font-family:Arial, Helvetica, sans-serif">{$article[description]}...</div></td>
+    </tr>
+</table>
+</li>{/loop} 
+
+
+{php $t1=1}
+{loop $info $val}
+{if $t1%2==0}
+<li class="jianbg2">{else}<li class="jianbg21">
+{/if}
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+  <tr>
+<td width="9%" rowspan="2" height="65" align="center" valign="middle">{if $val[thumb]}<img data-original="{$val[thumb]}" src="js/grey.gif" style="width:60px;height:60px; border-radius:5%; border:#fff 3px solid" alt="{$val[title]}">
+{else}<img  data-original="templates/{$CFG[tplname]}/images/nosmall.gif" src="js/grey.gif" style="width:60px;height:60px; border-radius:5%; border:#fff 3px solid" alt="{$val[title]}">
+{/if}</td>
+    <td width="72%" height="30"><a href="{$val[url]}" target="_blank">{$val[title]}</a>&nbsp;&nbsp;<font color="#ff5500" style="font-size:12px;">{$val[areaname]}</font>&nbsp;&nbsp;<font color="#007700">{$val[catname]}</font></td>
+<td width="10%" align="center"><span style="color:#f80;font-size:12px;">{$val[postdate]}</span></td>
+<td width="9%" align="center"><span style="color:#888;font-size:12px; padding-right:12px;">点击：{$val[click]}</span></td>
+    
+  </tr>
+  <tr>
+    <td colspan="3" valign="top" height="35"><div style=" line-height:140%; font-size:12px; color:#999; font-family:Arial, Helvetica, sans-serif">{$val[intro]}...</div></td>
+    </tr>
+</table>
+</li>
+{php $t1++}
+{/loop}
+                
+</ul>
+</div>
+	<div class="pagination_module clearfix" style="margin-top:7px;">
+				<span class="right2" style="float:right;"><a href="#top" style="border:0; color:#fff;">返回顶部 ↑</a></span>
+				<span class="right2" style="float:left;"><!--{template page}--></span></span>	
+				
+			</div>
+
+
+
+
+ </div></div>
+	<!-- 主体 结束 -->
+	<!--{template footer}-->
+</div>
+</body>
+</html>

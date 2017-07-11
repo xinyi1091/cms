@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><?=encode_output($seo['title'])?></title> 
+<link href="public/css/style1.css" type="text/css" rel="stylesheet" />
+<style>
+	#regbox{margin:0 auto;line-height:40px;text-align:center}
+	.submit{border:1px solid #000;background-color:#fff;color:#000;padding:5px 50px;}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+</head>
+<body>
+<?include tpl("header");?>
+<div class="line1" style="color:#00598c;"><p><a href=".">首页</a> > 会员注册</p></div>
+<div class="line1" style="background-color:#fafafa">
+	<form name="form1" id="form1" method="post" action="member.php?act=act_register">
+	<p id="regbox">
+		账　　号：<input type="text" maxlength="20" size="15" id="username" name="username"/><br/>
+		密　　码：<input type="password" maxlength="20" size="16" id="password" name="password"/><br/>
+		重复密码：<input type="password" maxlength="20" size="16" id="repassword" name="repassword"/><br/>
+		邮　　箱：<input type="text" maxlength="20" size="16" id="email" name="email"/><br/>
+		验证码：<input type="text" class="text" size="10" name="checkcode" id="checkcode"/><img src="do.php?act=chkcode&hash=<?echo rand(111111,999999);?>"/><br/>
+		<input type="hidden" value="<?=$refer?>" name="refer"/>
+		<input class="submit" type="submit" name="submit" value="提交注册"/>
+	</p>
+	</form>
+</div>
+<?include tpl("footer");?>
+</body>
+</html>

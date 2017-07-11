@@ -1,0 +1,70 @@
+
+#regk { 
+	width: 1100px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 30px;
+	margin-left: auto;
+	text-align: left;
+	}
+.tit10 { color: #656565; float: right; padding-right: 10px; line-height: 20px; margin-top: 40px; }
+.tit1 span { color: #FF0000; }
+.tit20 { color: #316ac3; line-height: 20px; float: left; margin-top: 103px; font-weight: bold; font-size: 14px; padding-left: 130px; }
+.regc { 
+	color: #373735;
+	line-height: 40px;
+	font-size: 14px;
+	background-image: url(../images/loginbg.jpg);
+	width: 967px;
+	height: 333px;
+	margin: 10px auto 0 auto;
+	}
+#regz { color:#222; font-size:18px; font-weight:bold; background: #F0f0f0; padding-left:10px; height:40px; line-height:40px; }
+
+.regc_1 { line-height: 20px; padding-top: 5px; padding-bottom: 5px; }
+.regc_1 .left { display:block; float:left; width:80px; line-height:26px; text-align: right; padding-right:10px;}
+.regc_1 img { vertical-align:middle;}
+.regc_1 input { vertical-align:middle;}
+.regc_2 { line-height: 20px; padding-top: 10px; padding-bottom: 3px; font-size: 12px; padding-left: 30px; border-bottom:1px solid #cccccc; }
+.regc_2 span { color: #3269c4; font-size: 14px; font-weight: bold; }
+.red { color: #FF0000; }
+.regc_1 .input0 { border: 1px solid #a7a6ab; width: 114px; height: 22px; line-height:22px; vertical-align:middle; padding:4px;}
+.regc_1 .input1 { border: 1px solid #a7a6ab; width: 114px; height: 22px; line-height:22px; vertical-align:middle; padding:4px;}
+.regc_1 a { color: #083ff2; text-decoration: underline; }
+.regc_1 a:hover { color: #FF0000; }
+.login_bg {
+width: 1000px;
+margin: 0 auto;
+padding: 20px;
+background: url(../images/loginbg.jpg) no-repeat;
+}
+.inputstyle1{width:123px;height: 19px;padding: 4px;font-size: 14px;outline: none;
+border-color: #adb6c9;}
+
+.newFormBtn_red2:hover, a.newFormBtn_red2:hover { background:#F30;
+}
+
+.newFormBtn_red, .newFormBtn_red2, .newFormBtn_gray, .newFormBtn_gray2, .newFormBtn_blue {
+width: 240px;
+height: 40px; color:#FFF;
+background:#069; font-size:16px;border-radius:4px;
+border: 0; line-height:40px;
+text-align: center;
+cursor: pointer;
+display: inline-block;
+}
+.input6 { border: 1px solid #a7a6ab; width: 114px; height: 22px; line-height:22px; vertical-align:middle; padding:4px;}
+.reg_input {
+vertical-align: middle;
+border: 1px solid #dbdbdb;
+border-color: #c0c0c0 #e1e1e1 #e1e1e1 #c0c0c0; height:20px;
+background: #fbfbfb;
+padding: 5px;
+font-size: 14px;
+width: 220px;
+}
+
+.reg_box {
+	background-color:#fff;
+	margin-bottom:20px;
+	}

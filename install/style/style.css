@@ -1,0 +1,110 @@
+body {
+font-family: 'DroidSansRegular', Helvetica, Arial, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #606060;}
+.bor{
+   border: 1px solid #C6D7DE;
+}
+td { font-size:14px;}
+.hdfont{ font-size:35px;  font-family:"Microsoft YaHei"; color:#444; }
+.content{ width:94%; margin:26px auto; background-color:#efefef; border:#000 5px solid}
+.heading {
+height: 50px;
+margin: 0 auto;
+padding: 15px;
+background-color: #e2e2e2;
+background-image: -moz-linear-gradient(top, #eeeeee, #e2e2e2);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#e2e2e2));
+background-image: -webkit-linear-gradient(top, #eeeeee, #e2e2e2);
+background-image: -o-linear-gradient(top, #eeeeee, #e2e2e2);
+background-image: linear-gradient(to bottom, #eeeeee, #e2e2e2);
+background-repeat: repeat-x;
+text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+border-bottom: 1px solid #c1c1c1; text-align: center; line-height:50px; font-weight:bold; 
+}
+.navbar-inner {
+min-height: 50px;
+padding-right: 0;
+padding-left: 20px;
+background-color: #2f96b4;
+background-image: -moz-linear-gradient(top, #52b2cf, #2f96b4);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#52b2cf), to(#2f96b4));
+background-image: -webkit-linear-gradient(top, #52b2cf, #2f96b4);
+background-image: -o-linear-gradient(top, #52b2cf, #2f96b4);
+background-image: linear-gradient(to bottom, #52b2cf, #2f96b4);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff52b2cf', endColorstr='#ff2f96b4', GradientType=0);
+filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+border-color: #64cceb #64cceb #184552 #2f96b4;
+-webkit-border-radius: 0;
+-moz-border-radius: 0;
+border-radius: 0;
+}
+.bor2{
+   padding:5px;
+   border: 1px dotted #84F384;
+   background:#FFFFE7;
+}
+.bor3{
+   border: 1px solid #ADAAAD;
+   background:#FFFBD6;
+}
+a						{ text-decoration: none; color: #003366 }
+a:hover					{ text-decoration: underline }
+body					{ font-size: 9pt; }
+table					{ font: 9pt Tahoma, Verdana; color: #000000 }
+input,select,textarea	{ font: 9pt Tahoma, Verdana; color: #000000; font-weight: normal;  }
+select					{ font: 9pt Tahoma, Verdana; color: #000000; font-weight: normal; background-color: #F8F8F8 }
+.nav					{ font: 9pt Tahoma, Verdana; color: #000000; font-weight: bold }
+.nav a					{ color: #000000 }
+.header					{ color: #7d7d7d;
+text-shadow: 0 1px 0 #fafafa;
+line-height: 35px;
+font-size: 18px;
+background-color: #e2e2e2;
+background-image: -moz-linear-gradient(top, #f2f2f2, #e2e2e2);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f2f2f2), to(#e2e2e2));
+background-image: -webkit-linear-gradient(top, #f2f2f2, #e2e2e2);
+background-image: -o-linear-gradient(top, #f2f2f2, #e2e2e2);
+background-image: linear-gradient(to bottom, #f2f2f2, #e2e2e2);
+background-repeat: repeat-x;
+border-bottom: 1px solid #ccc;
+height: 35px;
+padding: 0 0 0 10px;
+margin: -19px -19px 10px -19px;}
+.txt_1{ font-size:14px; padding:15px; line-height:180%; text-indent:2em; color:#333;}
+.header a				{ color: #FFFFFF }
+.category				{ font: 9pt Tahoma, Verdana; color: #000000; background-color: #EFEFEF }
+.tableborder			{ border: 1px solid #cecece; } 
+.tableborder1			{ background: #ffffff; border: 1px solid #698CC3 } 
+.singleborder			{ font-size: 0px; line-height: 1px; padding: 0px; background-color: #F8F8F8 }
+.smalltxt				{ font: 9pt Tahoma, Verdana }
+.outertxt				{ font: 9pt Tahoma, Verdana; color: #000000 }
+.outertxt a				{ color: #000000 }
+.bold					{ font-weight: bold }
+
+.newFormBtn_red2:hover, a.newFormBtn_red2:hover { background:#F30;
+}
+
+.newFormBtn_red, .newFormBtn_red2, .newFormBtn_gray, .newFormBtn_gray2, .newFormBtn_blue {
+width: 240px;
+height: 40px; color:#FFF;
+background:#069; font-size:16px;border-radius:4px;
+border: 0; line-height:40px;
+text-align: center;
+cursor: pointer;
+display: inline-block;
+}
+
+.dfinput {
+width: 245px;
+height: 32px;
+line-height: 32px;
+border-top: solid 1px #a7b5bc;
+border-left: solid 1px #a7b5bc;
+border-right: solid 1px #ced9df;
+border-bottom: solid 1px #ced9df;
+background: url(../images/inputbg.gif) repeat-x;
+text-indent: 10px;
+}

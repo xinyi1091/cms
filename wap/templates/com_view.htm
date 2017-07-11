@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><?=encode_output($seo['title'])?></title> 
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable"> 
+<meta content="black" name="apple-mobile-web-app-status-bar-style"> 
+<meta content="telephone=no" name="format-detection"> 
+<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div id="main_body">
+<div class="com_daohang"><?=encode_output($seo['title'])?><span><a href="index.php">返回主页</a></span></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="com_nav">
+  <tr>
+    <td width="35%" rowspan="2" align="center" valign="middle"><img src="<?=encode_output($thumb)?>" style="width:100px; height:75px;border-radius:3%; border:#fff 4px solid;" /></td>
+    <td width="65%" align="center" height="80" valign="middle"><div class="com_hd"><?=encode_output($comname)?></div></td>
+  </tr>
+  <tr>
+    <td align="left" height="30"><div style=" font-size:110%;">联系电话：<font color="#CC0000"><b><?=$phone?></b></font>&nbsp;</div></td>
+  </tr>
+</table>
+
+<section class="s_hdp"><a href="#" class="s_hdp-t"></a></section>
+<section class="s_moreread"><div class="module-t2"><h3>商家简介</h3><span class="more">阅读：<?=$click?></span></div>
+
+<div class="list_box">
+<dl><dd style="height:auto;">
+<?php echo encode_output($introduce); ?><br />
+</dd></dl>
+</div>
+</section>
+<div class="module module-margin">
+<div class="topic2">
+<ul class="cont-list"><li><span class="live-icon">所属行业:</span><a href=""><?php echo encode_output($here); ?></a></li></ul>
+<ul class="cont-list"><li><span class="live-icon">联 系 人:</span><?=encode_output($linkman)?></li></ul>
+<?if($phone) {?>
+<ul class="cont-list"><li><span class="live-icon">联系电话:</span><a href="tel:<?=$phone?>"><font color="#CC0000"><b><?=$phone?></b></font></a><font color="#999999">（点击号码即可拨打）</font></li></ul>
+<?}?>
+<?if($address) {?>
+<ul class="cont-list"><li><span class="live-icon">联系地址:</span><font color="#CC0000"><b><?=$address?></b></font></li></ul>
+<?}?>
+<?if($email) {?>
+<ul class="cont-list"><li><span class="live-icon">电子邮件:</span><?=$email?></li></ul>
+<?}?>
+<?if($qq) {?>
+<ul class="cont-list"><li><span class="live-icon">联系 QQ:</span><font color="#CC0000"><b><?=$qq?></b></font></li></ul>
+<?}?>
+<ul class="cont-list"><li><span class="live-icon">营业时间:</span><?=$hours?></li></ul>
+
+</div>
+<section class="s_moreread" style="margin-top:15px;"><div class="module-t2"><h3>商家图片</h3><span class="more"></span></div>
+<div class="con_con">
+<?if($com_images) {?>
+<?php foreach($com_images as $com_images){ 
+?>
+<img src="<?php echo $com_images[path];?>">
+<?php
+}
+?>
+<?php
+}
+?>
+</div>
+
+<div style="clear:both"></div>
+<footer class="footer">
+	<a href="#header" class="back_top"><span></span>返回顶部</a>
+	<a href="">触屏版</a>
+	<a href="../">电脑版</a>
+</footer>	
+</div>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+<title>{$seo['title']}</title>
+<meta name="Keywords" content="{$seo['keywords']}">
+<meta name="Description" content="{$seo['description']}">
+<link href="templates/{$CFG[tplname]}/style/index.css" type="text/css" rel="stylesheet" />
+<script src="js/common.js"></script>
+<script src="js/hdpic.js"></script>
+<script src="js/jquey.js"></script>
+</head>
+<body class="home-page">
+<!--{template header}-->
+<!-- 主体 -->
+<div class="adbox_1"> <?php echo ads_list('1');?></div>
+
+<div class="layer_box">
+	<div class="left1">
+		<div class="nr">
+			<div class="slide">
+			<script type=text/javascript>
+			<!--
+				var focus_width=400
+				var focus_height=310
+				var text_height=0
+				var swf_height = focus_height+text_height
+				var pics='<?=$flash['image']?>'
+				var links='<?=$flash['url']?>'
+				var texts='||||'	
+				document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">');
+				document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="images/flashplay.swf"><param name="quality" value="high"><param name="bgcolor" value="#ffffff">');
+				document.write('<param name="menu" value="false"><param name="wmode" value="opaque">');
+				document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
+				document.write('<embed src="images/flashplay.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" bgcolor="#ffffff" quality="high" width="'+ focus_width +'" height="'+ focus_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />');		
+				document.write('</object>');
+			//-->
+			</script>
+			</div>
+			<div class="news">
+				
+				<!-- 置顶信息 -->
+				<ul class="news_top">
+				{loop $top_info $val}
+				<li><a href="{$val['url']}" target="_blank" title="{$val['title']}" class="blue">{$val['title']}</a></li>
+				{/loop}
+				</ul>
+				<!-- 最新信息 -->
+				<ul class="news_new">
+				{loop $articles $val}
+				<li>
+				<span style="float:right; font-size:11px;font-family:Arial; padding-left:10px;">{$val['pdate']}</span>
+				<a href="{$val['url']}" target="_blank" title="{$val['title']}">{$val['title']}</a>
+				</li>
+				{/loop}
+				</ul>
+				
+			</div>
+		</div>
+	</div>
+	<div class="right1">
+		<div class="nr">
+			<div class="tianqi">
+			<?php echo ads_list('5');?>
+			</div>
+			<div class="tongji">
+			
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td height=28 width=135>共有信息<span><?=$info_num?></span>条</td>
+						<!-- <td height=28 width=135>商家信息<span><?=$com_num?></span>条</td> -->						<td height=28 width=135>注册会员<span><?=$member_num?></span>位</td>
+					</tr>
+					<tr>
+						<!-- <td height=28 width=135>新闻资讯<span><?=$article_num?></span>条</td>
+						<td height=28 width=135>注册会员<span><?=$member_num?></span>位</td> -->
+					</tr>
+				</table>
+			
+			</div>
+			<div class="hotline">
+				热线电话：{$CFG['phone']}
+					<br>QQ：<!--{loop $CFG['qq'] $qq}--><a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$qq}&amp;Site={$CFG[webname]}&amp;Menu=yes" target="_blank"><img style="display:inline" src="http://wpa.qq.com/pa?p=1:{$qq}:4" height="16" border="0" alt="QQ" />{$qq}</a><!--{/loop}-->
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 商家 --><!--
+<div class="layer_box md10">
+	<div class="tt9">
+		<h6>
+		<span>共有&nbsp;<font color="#ee3300"><?=$com_num?></font>&nbsp;家商家进驻&nbsp;&nbsp;&nbsp;&nbsp;<a href="com.php">更多&gt;&gt;</a></span>
+		<a href="com.php">最新入驻商家</a>
+		</h6>
+	</div>
+	<div class="comlist">
+		<div class="tu">
+			<ul id="tu">
+				{php $comi=1}
+				{loop $coms $val}
+				<li>
+				<div class="com_tu"><a href="{$val[url]}" class="img_wrap"><img src="{$val[thumb]}" border="0" alt="{$val[comname]}"></a>
+				</div>
+				<div class="text-area"><p>{$val[sname]}</p><p>Tel：<span class="p-num">{$val[phone]}</span></p></div>
+				</li>
+				{php $comi++}
+				{/loop}
+				
+			</ul>
+			<ul id=text>
+				{loop $coms2 $val}
+
+				<li>
+				<span><a href="com.php">[商家]</a></span>&nbsp;<a href="{$val[url]}" target=_blank>{$val[sname]}</a>
+				</li>
+
+				{/loop}
+			</ul>
+		</div>
+	</div>
+</div>-->
+
+
+<div class="adbox_1"> <?php echo ads_list('2');?></div><div style="margin:10px auto; width:100%;">
+	<div class="layer_box2">
+
+
+		<div id="ilist99" style="border-right:#e8e8e8 1px solid">
+			<h6><span><a href="category.php?id=96">更多最新</a></span><a href="category.php?id=96">便民服务</a></h6>
+			<ul>
+			{loop $new_info_7 $val}
+			<li><span style="float:right; font-size:11px;font-family:Arial; padding-left:10px;">{$val['postdate']}</span><font color="#ff6600">[{$val['areaname']}]</font>&nbsp;<a href="{$val['url']}" target="_blank" title="{$val['title']}" class="red">{$val['title']}</a></li>
+			{/loop}
+			</ul>
+		</div>
+
+		<div id="ilist99" style="border-right:#e8e8e8 1px solid">
+		<h6><span><a href="category.php?id=2">更多最新</a></span><a href="category.php?id=2">房屋租售</a></h6><ul>
+		{loop $new_info_2 $val}
+		<li><span style="float:right; font-size:11px;font-family:Arial; padding-left:10px;">{$val['postdate']}</span><font color="#ff6600">[{$val['areaname']}]</font>&nbsp;<a href="{$val['url']}" target="_blank" title="{$val['title']}" class="red">{$val['title']}</a></li>
+		{/loop}
+		</ul>
+		</div>
+
+		<div id="ilist99">
+		<h6><span><a href="category.php?id=1">更多最新</a></span><a href="category.php?id=1">创业</a></h6><ul>
+		{loop $new_info_1 $val}
+		<li><span style="float:right; font-size:11px;font-family:Arial; padding-left:10px;">{$val['postdate']}</span><font color="#ff6600">[{$val['areaname']}]</font>&nbsp;<a href="{$val['url']}" target="_blank" title="{$val['title']}" class="red">{$val['title']}</a></li>
+		{/loop}
+		</ul>
+		</div>
+	</div>
+	
+	<div class="adbox_1"> <?php echo ads_list('3');?></div>
+	<div class="layer_box2" style="margin-top:10px;">
+	
+		<div id="ilist99" style="border-right:#e8e8e8 1px solid">
+		<h6><span><a href="category.php?id=4">更多最新</a></span><a href="category.php?id=4">生活服务</a></h6><ul>
+		{loop $new_info_4 $val}
+		<li><span style="float:right; font-size:11px;font-family:Arial; padding-left:10px;">{$val['postdate']}</span><font color="#ff6600">[{$val['areaname']}]</font>&nbsp;<a href="{$val['url']}" target="_blank" title="{$val['title']}" class="red">{$val['title']}</a></li>
+		{/loop}
+		</ul>
+		</div>
+		
+		<div id="ilist99" style="border-right:#e8e8e8 1px solid">
+		<h6><span><a href="category.php?id=3">更多最新</a></span><a href="category.php?id=3">二手买卖</a></h6><ul>
+		{loop $new_info_3 $val}
+		<li><span style="float:right; font-size:11px;font-family:Arial; padding-left:10px;">{$val['postdate']}</span><font color="#ff6600">[{$val['areaname']}]</font>&nbsp;<a href="{$val['url']}" target="_blank" title="{$val['title']}" class="red">{$val['title']}</a></li>
+		{/loop}
+		</ul>
+		</div>
+		
+		<div id="ilist99">
+		<h6><span><a href="category.php?id=5">更多最新</a></span><a href="category.php?id=5">健康生活</a></h6><ul>
+		{loop $new_info_5 $val}
+		<li><span style="float:right; font-size:11px;font-family:Arial; padding-left:10px;">{$val['postdate']}</span><font color="#ff6600">[{$val['areaname']}]</font>&nbsp;<a href="{$val['url']}" target="_blank" title="{$val['title']}" class="red">{$val['title']}</a></li>
+		{/loop}
+		</ul>
+		</div>
+	</div>
+	
+	<div class="layer_box2" style="margin-top:10px;">
+	
+		<div id="ilist99" style="border-right:#e8e8e8 1px solid">
+		<h6><span><a href="category.php?id=7">更多最新</a></span><a href="category.php?id=7">交友征婚</a></h6><ul>
+		{loop $new_info_9 $val}
+		<li><span style="float:right; font-size:11px;font-family:Arial; padding-left:10px;">{$val['postdate']}</span><font color="#ff6600">[{$val['areaname']}]</font>&nbsp;<a href="{$val['url']}" target="_blank" title="{$val['title']}" class="red">{$val['title']}</a></li>
+		{/loop}
+		</ul>
+		</div>
+		
+		<div id="ilist99" style="border-right:#e8e8e8 1px solid">
+		<h6><span><a href="category.php?id=6">更多最新</a></span><a href="category.php?id=6">车辆信息</a></h6><ul>
+		{loop $new_info_6 $val}
+		<li><span style="float:right; font-size:11px;font-family:Arial; padding-left:10px;">{$val['postdate']}</span><font color="#ff6600">[{$val['areaname']}]</font>&nbsp;<a href="{$val['url']}" target="_blank" title="{$val['title']}" class="red">{$val['title']}</a></li>
+		{/loop}
+		</ul>
+		</div>
+		
+		<div id="ilist99">
+		<h6><span><a href="category.php?id=119">更多最新</a></span><a href="category.php?id=119">宠物信息</a></h6><ul>
+		{loop $new_info_8 $val}
+		<li><span style="float:right; font-size:11px;font-family:Arial; padding-left:10px;">{$val['postdate']}</span><font color="#ff6600">[{$val['areaname']}]</font>&nbsp;<a href="{$val['url']}" target="_blank" title="{$val['title']}" class="red">{$val['title']}</a></li>
+		{/loop}
+		</ul>
+		</div>
+	</div>
+	
+	
+
+
+	
+</div>
+
+
+
+<div class="ggbox2"> <?php echo ads_list('4');?></div>
+
+<div class="mod_3 mar10">
+<div class="hd clearfix">
+<div class="dh_bm"><b class="left">便民电话114 · 同城服务</b><span class="yellow" style="color:#f50;">想让您的电话显示在这里吗？请联系客服&nbsp;<!--{loop $CFG['qq'] $qq}--><a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$qq}&amp;Site={$CFG[webname]}&amp;Menu=yes" target="_blank"><img style="display:inline" src="http://wpa.qq.com/pa?p=1:{$qq}:4" height="16" border="0" alt="QQ" />{$qq}</a>
+								<!--{/loop}-->&nbsp; &nbsp;<a href="bianmin.php">更多电话&gt;&gt;</a></span></div>
+</div>
+<div class="bd">
+<div id="bmdh" class="area">
+<ul class="bianmin clearfix">
+{php $t1=1}
+{loop $fac $fac}
+<li class="bg{$t1}"><i>{$fac['title']}<br>{$fac['phone']}</i></li> 
+{php $t1++}
+{/loop}
+</ul>
+</div>
+</div>
+</div>
+
+{if !empty($links[txt])}
+<div class="friendLink mar10">
+<div class="bd">
+
+<div class="text">
+友情连接：
+{loop $links[txt] $link}
+<a href="{$link['url']}" target=_blank title="{$link['webname']}">{$link['webname']}</a>&nbsp;&nbsp;
+{/loop}{loop $links[image] $link}<a href="{$link['url']}" target=_blank title="{$link['webname']}">{$link['webname']}</a>&nbsp;&nbsp;{/loop}
+</div>
+  
+</div>
+</div>
+{/if}
+
+<!-- 主体 结束 -->
+<!--{template footer}-->
+</div>
+</body>
+</html>

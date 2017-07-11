@@ -1,0 +1,72 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?=$charset?>">
+<title>阅读协议</title>
+<link href="style/style.css" rel=stylesheet type=text/css>
+<style type="text/css">
+<!--
+.STYLE4 {	font-family: "黑体";
+	font-weight: bold;
+}
+-->
+</style>
+<script>
+function chklicense()
+{
+	if(document.form.yes.checked==true)
+	{
+		document.form.submit.disabled=false;
+	}else{
+		document.form.submit.disabled=true;
+	}
+}
+</script>
+</head>
+<body>
+<div class="content">
+<div class="heading"><span class="hdfont">众家系统安装程序</span></div>
+
+<br><br><br>
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="tableborder">
+  <tr >
+    <td  class="header">&nbsp;使用协议</td>
+  </tr>
+  <tr>
+    <td height="68" colspan="2" align="center" bgcolor="#FFFFFF">
+	
+        
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="0" >
+	<form id="form" name="form" method="post" action="index.php?step=1">
+      
+
+      <tr bgcolor="#FFFFFF" align="left" >
+        <td class="txt_1"><br>
+
+		已绿化
+<br>
+
+          </td>
+      </tr>
+
+      <tr bgcolor="#FFFFFF" align="center">
+        <td colspan="2">
+		<input type="checkbox" name="yes" value="checkbox" onClick="return chklicense();" width="30" height="30"/>
+		<input type="submit" name="submit" value="我了解了，现在就安装！" disabled class="newFormBtn_red"/>
+        </td>
+        </tr>
+    </form>
+    
+    <tr><td colspan="2" height="100"></td></tr>
+	</table>
+    
+    
+    </td>
+  </tr>
+</table>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<link href="templates/{$CFG[tplname]}/style/style.css" type="text/css" rel="stylesheet" />
+<div style="overflow:hidden;zoom:1">
+	<div style="float:left;">
+		<span class="nolk">共{$pager[count]}记录&nbsp;&nbsp;</span><span class="nolk">当前{$pager[page]}/{$pager[page_count]}页</span>
+		
+	</div>
+	<div style="float:right">
+		<!--{if $pager[first]}-->
+		<a href="{$pager[first]}">首页  </a>
+		<!--{/if}-->
+		<!--{if $pager[prev]}-->
+		<a href="{$pager[prev]}">上一页</a>
+		<!--{/if}-->
+		<?
+			/*生成翻页链接*/
+			$s_f=ltrim($_SERVER['PHP_SELF'],'/');//页面文件
+			$a_s=explode('.',$s_f);
+			$s_a=$a_s[0];//页面标识
+			$a_p=array();//参数
+			$url='';//链接格式
+			switch ($s_a){
+				case 'category':
+					$cat=$catid;$area=$areaid;
+					$a_p = array('cid' => $cat, 'eid' => $area);
+					$url=url_rewrite($s_a,$a_p,1);
+				break;
+				case 'com';
+					$cat=$catid;$area=$areaid;
+					$a_p = array('catid' => $cat, 'eid' => $area, 'act'=>'list');
+					$url=url_rewrite($s_a,$a_p,1);
+				break;
+				case 'article';
+					$cat=$typeid;
+					$a_p = array('iid' => $cat, 'act'=>'list');
+					$url=url_rewrite($s_a,$a_p,1);
+				break;
+				case 'help';
+					$cat=$typeid;
+					$a_p = array('tid' => $cat, 'act'=>'list');
+					$url=url_rewrite($s_a,$a_p,1);
+				break;
+				default:
+					$flt='.page.cat.catid.keywords.keyword.area.areaid.type.typeid';
+					$_REQUEST['page']=intval($_REQUEST['page'])?intval($_REQUEST['page']):1;
+					foreach($_REQUEST as $k=>$v){
+						$v=trim($v);
+						if(!$v) continue;
+						if (strpos($flt,$k,0!==false)){
+							$url.=$k.'='.$v.'&';
+						}
+					}
+					$url=$s_f.'?'.rtrim($url,'&');
+				break;
+			}
+			/*获取链接结束*/
+			$p_count=$pager['page_count'];//分页总数
+			$p_page=$pager['page'];//当前页
+			$p_s=($p_page-4)<=1?1:$p_page-4;$p_e=($p_page+5)>=$p_count?$p_count:$p_page+5;
+			if($p_count<=10){
+				$p_s=1;$p_e=$p_count;
+			}
+			if($p_count>=10){
+				if($p_e<10) $p_e=10;
+				if(($p_e-$p_s)<10) $p_s=$p_e-9;
+			}
+			for($i=$p_s;$i<=$p_e;$i++){
+				if($i==$p_page) {
+					echo '&nbsp;&nbsp;<span class=curt>'.$i.'</span>&nbsp;&nbsp;';
+				}else{
+					echo '&nbsp;<a href="'.preg_replace('/page(.)(\d+)/i','page${1}'.$i,$url).'"> '.$i.' </a>&nbsp;';
+				}
+			}
+			
+		?>
+		<!--{if $pager[next]}-->
+		<a href="{$pager[next]}">下一页</a>
+		<!--{/if}-->
+		<!--{if $pager[last]}-->
+		<a href="{$pager[last]}">尾页</a>  
+		<!--{/if}--><span class="nolk">{$pager[size]}/页</span>
+	</div>
+</div>

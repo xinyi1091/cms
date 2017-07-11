@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{$seo['title']}</title>
+<meta name="Keywords" content="{$seo['keywords']}">
+<meta name="Description" content="{$seo['description']}">
+<link href="templates/{$CFG[tplname]}/style/reset.css" type="text/css" rel="stylesheet" />
+<link href="templates/{$CFG[tplname]}/style/style.css" type="text/css" rel="stylesheet" />
+<link href="templates/{$CFG[tplname]}/style/reg.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/validator/validator.min.js"></script>
+<link href="js/validator/validator.css" type="text/css" rel="stylesheet" />
+</head>
+<body class="home-page">
+<!--{template header}-->
+<div class="wrapper">
+ 
+<div class="clearfix height12" style="height:15px;"></div>
+<div class="m_title_h"><div class="dh_list"><b>会员注册</b><span></span></div></div>
+   <div class="reg_box">
+   
+   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="689" style=" border-right:1px #DDDDDD solid">
+	<form name="reg" method="post" action="member.php">
+  <table width="95%" border="0" align="center" cellpadding="2" cellspacing="2"  style="font-size:14px;">
+<tr><td height="30"></td><td></td></tr>
+  <tr>
+    <td width="130" height="45" align="right">用户名：</td>
+    <td width="426" align="left"><input name="username" type="text"  class="reg_input" id="username"  maxlength="25" /></td>
+    </tr>
+    <tr>
+    <td height="45" align="right">常用电子邮箱：</td>
+    <td align="left"><input name="email" type="text"  class="reg_input" id="email"    maxlength="60"/></td>
+    </tr>
+  <tr>
+    <td height="45" align="right">设置登录密码：</td>
+    <td align="left"><input name="password" type="password"  class="reg_input" id="password"  maxlength="18"/></td>
+    </tr>
+  <tr>
+    <td height="45" align="right">确认登录密码：</td>
+    <td align="left"><input name="repassword" type="password"  class="reg_input" id="repassword"  maxlength="18"  /></td>
+    </tr>
+	<tr>
+    <td height="45" align="right">输入验证码：</td>
+    <td align="left">
+
+	<input  class="reg_input" name="answer" id="answer" type="text" style="width:50px;" />
+	<input type="hidden" id="vid" name="vid" value={$verf[vid]} />
+				<font style="font-weight:bold;color:green;font-size:14px;">{$verf[question]}</font>&nbsp;<span id=imgid></span><span id=c_checkver></span>
+	</td>
+    </tr>
+
+  <tr>
+  
+    <td height="45" >
+      <input name="member_type" type="hidden" id="member_type"  /></td>
+    <td  class="link_lan" style=" float:left; height:40px; line-height:40px;"><input name="agreement" id="agreement" type="checkbox" value="1" checked="checked" />
+      我已阅读并同意 <a href="agreement/agreement.htm" target="_blank">[注册协议]</a></td>
+    </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td height="50">
+	<div style=" float:left;">
+	  <input type="hidden" name="act" value="act_register">
+	  <input type="hidden" name="submit" value="1">
+      <input name="reg" type="submit" id="reg" class="newFormBtn_red2"  value="立即注册"  />
+	   </div>
+	   </td>
+    </tr>
+    <tr><td height="30"></td><td></td></tr>
+</table>
+</form>
+	</td>
+    <td width="409" valign="top"><table width="220" border="0" align="center" cellpadding="0" cellspacing="10" style="line-height:180%">
+      <tr>
+        <td   style="font-size:14px;"><strong>已经有帐号？</strong></td>
+      </tr>
+      <tr>
+        <td>
+		<input name="reg2" type="submit" class="newFormBtn_red2" id="" value="立即登录"  onclick="window.location='member.php?act=login&refer={$PHP_URL}'" /></td>
+      </tr>
+      <tr>
+        <td><strong style="color: #009900">如果您是商家</strong> <br />
+            注册会员后可发布你的商店商品信息...</td>
+      </tr>
+ 
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+ </div>
+ <div class="clearfix height12"></div>
+	
+</div>
+<!--{template footer}-->
+
+<script type="text/javascript">
+$.validator("username")
+.setDefaultMsg("16个字符(数字，字母和下划线)。")
+.setFocusMsg("16个字符(数字，字母和下划线)。")
+.setRequired("请填写用户名。")
+.setServerCharset("GBK")
+.setStrlenType("byte")
+.setMaxLength(16, "16个字符(数字，字母和下划线)。")
+.setAjax("member.php?act=ajax&type=username", "此用户名已被注册。")
+.setCallback(function(str){ return /^[\w|\u4E00-\u9FA5]*$/.test(str); }, "仅可使用汉字、字母、数字或下划线。")
+.setCallback(function(str){ return ! /^\d{11}$/.test(str); }, "不能是11位数字，请另换一个");
+
+$.validator("email")
+.setDefaultMsg("用于登录您的帐户和找回密码。")
+.setFocusMsg("用于登录您的帐户和找回密码。")
+.setRequired("请填写电子邮箱。")
+.setServerCharset("gbk")
+.setStrlenType("symbol")
+.setMaxLength(50, "邮箱格式错误")
+.setRegexp(/^\w+((-|\.)\w+)*@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/, "电子邮箱格式不正确。", false)
+.setAjax("member.php?act=ajax&type=email", "此电子邮箱已被注册。");
+
+$.validator("password")
+.setDefaultMsg("6至12个字符。")
+.setFocusMsg("6至12个字符。")
+.setRequired("请填写密码。")
+.setRegexp(/^\w+$/, "只能由数字、字母和下划线组成。", false)
+.setServerCharset("gbk")
+.setStrlenType("symbol")
+.setMinLength(6, "密码太短，最少为6位。")
+.setMaxLength(12, "密码不应超过12个字符。")
+.setCallback(is_complex_password, "您的密码太过简单，请更换复杂的密码。")
+.setCompareField("!=", "username", "密码不能和用户名相同。");
+
+$.validator("repassword")
+.setDefaultMsg("6至12个字符。")
+.setFocusMsg("请输入一致密码。")
+.setRequired("请再输入一遍密码。")
+.setRegexp(/^\w+$/, "只能由数字、字母和下划线组成。", false)
+.setServerCharset("gbk")
+.setStrlenType("symbol")
+.setMinLength(6, "密码太短，最少为6位。")
+.setMaxLength(12, "密码不应超过12个字符。")
+.setCompareField("==", "password", "两次输入的密码不一致。");
+
+$.validator("answer")
+.setRequired("请填写问题验证。")
+.setAjax("do.php?act=ver&vid="+$('#vid').val(), "回答不正确。");
+</script>
+</body>
+</html>
+

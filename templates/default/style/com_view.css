@@ -1,0 +1,133 @@
+/* com_view.css */
+
+.select_box .hd li.selected { background-image:url(../images/hd_320.png); background-repeat:no-repeat;}
+.topInfo_zone .hd span.right, .topInfo_zone .qita li .tel, .topInfo_zone .qita li .qicq { background-image:url(../images/icon.gif); background-repeat:no-repeat;}
+.select_box .hd { background-image:url(../images/bg_960.png); background-repeat:no-repeat;}
+
+.col_main { float:left; width:702px; position:relative;}
+.col_sub { float:right; width:230px; border:1px solid #c4c4c4; padding:1px}
+.topInfo_zone { border:1px solid #c4c4c4; background-color:#f6f6f6;}
+.topInfo_zone .hd { margin:8px!important; border-bottom:1px solid #c4c4c4;}
+.topInfo_zone .hd span.left { display:block; float:left; text-indent:.5em; font-size:14px; font-weight:bold; line-height:30px;}
+.topInfo_zone .hd span.right { margin-right:5px; display:block; float:right; background-position:0 -405px; height:30px; line-height:30px; color:#666; text-indent:2.2em; font-weight:bold;}
+.topInfo_zone .hd span.right b { font-size:18px; color:#369a00; font-weight:normal; font-family:Verdana, Arial, Helvetica, sans-serif;}
+.topInfo_zone .hd span.right .koubeizi { font-size:26px; color:#ef2c0c; font-weight:normal;}
+.topInfo_zone .hd span.right a { font-weight:normal;}
+.topInfo_zone .bd { padding:10px; padding-top:5px;}
+.topInfo_zone .bd .zhuti { border-bottom:1px dotted #999; padding-bottom:15px;}
+.topInfo_zone .zhuti .pic { float:left;}
+.topInfo_zone .zhuti .info { float:left; width:530px; text-align:left; display:inline; margin-left:10px;}
+.topInfo_zone .qita { margin-top:8px; position:relative;}
+.topInfo_zone .qita li { height:26px; line-height:26px; text-align:left; color:#333;}
+.topInfo_zone .qita li img { vertical-align:middle;}
+.topInfo_zone .qita li b { font-weight:normal; color:#8f8d8d;}
+.topInfo_zone .qita li .tel { background-position:0 -449px; line-height:26px; padding:6px 0 4px 24px; font-weight:bold;}
+.topInfo_zone .renqi { position:absolute; top:9px; right:9px;}
+.topInfo_zone .renqi .star { display:block; float:left; margin-right:2px;}
+
+.select_box { float:left; width:703px; margin-top:10px; position:relative;}
+.select_box .hd { background-position:0 -236px; height:31px; padding-left:10px;}
+.select_box .hd li { float:left; width:115px; height:29px; background:url(../images/shop_select.gif) no-repeat right 0; font-size:14px; line-height:29px;}
+.select_box .hd li a { color:#333;}
+.select_box .hd li.selected { background-position:-240px -311px; width:115px; height:29px;}
+.select_box .hd li.selected a { color:#fff; font-weight:bold;}
+.select_box .bd { border:1px solid #cecfd4;}
+.select_box .ft { position:absolute; width:60px; top:0px; right:5px;  height:29px; line-height:29px; background:url(../images/shop_select.gif) no-repeat 0 0;}
+.select_box .ft a { color:#666;} .select_box .ft a:hover { color:#333;}
+#ISL_Cont_1 { overflow:hidden; width:701px; margin:0 auto;}
+.shangjia { padding:10px 0 10px 0;}
+.shangjia li { float:left; text-align:center; width:153px; height:153px; margin:5px;border:1px solid #ddd;}
+.shangjia li img { padding:1px; }
+.shangpin { padding:10px 0 10px 18px;}
+.shangpin li { float:left; width:175px; text-align:left; padding:4px;}
+.shangpin li b { display:block;}
+.shangpin li b img { padding:4px; border:1px solid #e4e4e4;}
+.shangpin li span.price { color:#b61300; display:block; font-size:16px; font-weight:bold;}
+.shangpin li span.price sup { color:#666; font-size:16px;}
+.shangpin li span.price del { color:#666; font-size:12px; font-weight:normal;}
+.shangpin li span.title a { color:#666; text-decoration:underline;} .shangpin li span.title a:hover { color:#333;}
+
+.searchz_box { float:right; width:235px; margin-top:10px; text-align:left;}
+.searchz_box .hd { border:1px solid #e6e5e5; background:url(../images/repeatX2.png) repeat-x 0 0; height:24px; line-height:24px; font-weight:bold; color:#333; text-indent:.5em;}
+.searchz_box .bd { padding:10px; padding-bottom:8px; border:1px solid #e6e5e5; border-top:0;}
+.searchz_box .bd li { margin-bottom:6px;}
+.shop_view_all{ width:100%;}
+.shop_view_all .head1{width:100%; height:200px; background:url(../images/company_banner1.jpg) repeat-x;}
+.shop_view_all .head1 .logo{ float:left;}
+.shop_view_all .head1 .logo img{ width:200px; height:120px; border:#fff 5px solid; margin:0 auto;}
+.shop_view_all .head1 .title{ float:left; width:700px; text-align:center; text-align:center;font:bold 34px "Microsoft Yahei",sans-serif;margin:10px 0; color:#182f4e;}
+.shop_view_all .menu1{width:98%; height:20px; line-height:20px; color:#fff; margin:0 auto; font-size:14px;}
+.shop_view_all .menu1 li{ float:left; margin-left:15px; text-align:left; font-family:Arial, Helvetica, sans-serif}
+.nav_top{ width:100%; margin:0 auto; height:35px;background:url(../images/sv_topline.png) repeat-x;}
+.sv_title_h {
+width:100%;
+margin: 0px auto 0px auto;
+line-height:35px;
+height: 35px; 
+}
+.sv_dh_list { width:94%; margin:0 auto;}
+.sv_dh_list b{font-size:16px;  float:left;}
+.sv_dh_list span {float:right; color:font-size:14px;}
+.sv_dh_list a{ color:#039;}
+#content_sv {
+margin: 10px auto;
+background: #ffffff url(../images/sv_all_bg.png) repeat-y;
+height: auto!important;}
+.sv_title1{ background:url(../images/sv_title1.png) no-repeat; }
+.sv_title1 .title1{ color:#fff; line-height:45px; height:45px; text-align:left;font-size:18px; text-indent:3em; }
+.sv_title1 .title2{ color:#0e4f5f;font:bold 20px "Microsoft Yahei",sans-serif; text-align:left; text-indent:2em; height:45px;line-height:45px; }
+.sv_content{ padding:15px; line-height:170%; text-indent:2em; font-size:14px; margin-left:20px; text-align:left; color:#167a94}
+.sv_zl{ 
+	width:290px; 
+	background:url(../images/sv_icon.png) no-repeat; 
+	height:245px;
+	margin: 10px 0 10px 15px;
+	overflow:hidden;
+	}
+.sv_zl li{ 
+	line-height:34px; 
+	height:34px; 
+	display:block; 
+	width:290px; 
+	text-align:left; 
+	text-indent:3em; 
+	font-size:14px; 
+	border-bottom:#f0fafd 1px dotted;
+	white-space:nowrap;
+	overflow:hidden;
+	}
+.title3{display:block;background:url(../images/sv_title3.png) no-repeat; line-height:45px; height:45px; text-align:left;color:#fff; font-size:18px; text-indent:3em;}
+.title4{display:block;background:url(../images/sv_title4.png) no-repeat; line-height:45px; height:45px; text-align:left;color:#fff; font-size:18px; text-indent:3em;}
+.title9{display:block;background:url(../images/sv_title4.png) no-repeat; line-height:8px; height:8px;}
+.sv_title1 .title5{ color:#0e4f5f;font:bold 20px "Microsoft Yahei",sans-serif; text-align:left; text-indent:2em; height:45px;line-height:45px; background:#e2f7fc; }
+.title_bd{ width:290px; margin:0 auto;}
+.title_bd li{ 
+	background:url(../images/sv_icon2.png) no-repeat; 
+	width:290px; 
+	float:left; 
+	display:block;
+	white-space:nowrap;
+	overflow:hidden; 
+	line-height:32px; 
+	height:32px; 
+	text-align:left;
+	border-bottom:#f0fafd 1px dotted;
+	}
+.title_bd li a{ font-size:14px; padding-left:26px;}
+.bnspic { width:730px; margin:15px auto}
+.bnspic a{display:block;}
+.big_pic, .small_pic{float:left;}
+.big_pic, .big_pic a, .big_pic img{width:620px;height:395px;}
+.big_pic{overflow:hidden;position:relative;}
+.big_pic li{position:absolute;top:0;left:0;opacity:0;-webkit-transform:scale(0.9);transform:scale(0.4);z-index:-1;transition:all linear 0.2s;}
+.big_pic .on{opacity:1;-webkit-transform:scale(1);transform:scale(1);z-index:1;}
+.big_pic a{position:relative;}
+.big_pic .txt{width:620px;height:46px;line-height:46px;display:block;position:absolute;bottom:0;left:0;color:#BDBDBD;text-align:center;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#7F000000', endColorstr='#7F000000');background:rgba(0,0,0,0.5);transition:all ease .2s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.big_pic a:hover .txt{color:#FFFFFF;}
+.small_pic{width:100px;position:relative;left:10px;}
+.small_pic a, .small_pic img{width:90px;height:52px;}
+.small_pic a{padding:4px;background:#167a94;transition:all ease .2s;}
+.small_pic .on, .small_pic li:hover{position:relative;z-index:1;}
+.small_pic .on a{background:#e2f7fc;}
+.small_pic li{width:100px;height:66px;float:left;}
+

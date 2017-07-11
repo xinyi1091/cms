@@ -1,0 +1,87 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?=$charset?>">
+<title>权限检测</title>
+<link href="style/style.css" rel=stylesheet type=text/css>
+<style type="text/css">
+<!--
+.STYLE4 {	font-family: "黑体";
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<div class="content">
+<div class="heading"><span class="hdfont">众家系统安装程序</span></div>
+<br><br><br>
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="tableborder">
+  <tr >
+    <td  class="header">&nbsp;安装基本权限检测</td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" bgcolor="#FFFFFF"><table width="100%" align="center" border="0" cellspacing="1" cellpadding="0">
+          <tr bgcolor="#FFFFFF" >
+            <td class="txt_1"><br>
+			安装前，请务必把data/config.inc.php重命名为config.php
+			<br>如果您使用的是非Windows系统，以下目录必须具备可写权限才能进一步安装操作<br>
+             <br></td>
+          </tr>
+      </table></td>
+  </tr>
+</table>
+
+<br>
+<table width="95%" border="0" align="center" cellpadding="0" cellspacing="0" class="tableborder">
+  <tr>
+  <td  class="header">&nbsp;目录权限</td>
+  </tr>
+  <tr>
+    <td height="68" colspan="2" align="center" bgcolor="#FFFFFF">
+	
+        
+    <table width="90%" align="center" border="0" cellspacing="2" cellpadding="2">
+	<form id="form1" name="form1" method="post" action="index.php?step=2">
+      <tr align="left">
+        <td width="427" height="25">目录名称</td>
+        <td width="499">状态</td>
+      </tr>
+<?php
+
+foreach($message as $msg)
+{      
+
+?> 
+      <tr  align="left">
+        <td height="25" ><label><? echo $msg['name'];?></label></td>
+        <td height="25"><? echo $msg['write'];?></td>
+      </tr>
+<?php
+
+}
+?>
+      <tr bgcolor="#FFFFFF" align="center">
+        <td colspan="2" height="70"><label>
+<?
+if($next != 'no')
+{
+?>
+            <input type="submit" name="Submit" value="继续下一步" class="newFormBtn_red"/>
+<?
+}
+?>
+            </label></td>
+        </tr>
+
+    </form>
+    <tr><td colspan="2" height="50"></td></tr>
+	</table>
+    
+    
+    </td>
+  </tr>
+</table>
+<br><br><Br>
+</div>
+</body>
+</html>

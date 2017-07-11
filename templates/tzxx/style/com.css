@@ -1,0 +1,112 @@
+
+.banner_shop { margin-bottom:10px;}
+.shop_all{width:100%; clear:both;}
+.col_main { float:right; width:950px; overflow:hidden; margin-right:5px; padding-top:15px;}
+.col_sub { float:left; width:202px; overflow:hidden; background:#fff;border-right:1px solid #dedede;}
+.categories_nav { width:201px;}
+.categories_nav .hd { background:url(../images/dian_dh_title.png) no-repeat 0 0; height:40px; text-indent:-999em; overflow:hidden;}
+.categories_nav .bd { border:0px solid #f36100; padding:10px; padding-top:5px; text-align:left;}
+.categories_nav .bd ul { color:#666;}
+.categories_nav .bd ul li { margin-top:8px; width:182px; float:left; }
+.categories_nav .bd ul li a {  font-weight:bold; padding-left:14px; font-size:16px; height:35px;}
+.categories_nav .bd ul li a.xias { background:url(../images/sjiao_1.png) no-repeat 0 0px; width:190px;line-height:35px; height:35px; padding-left:29px;}
+.categories_nav .bd ul li a.rights { background:url(../images/sjiao_1.png) no-repeat 0 -26px;line-height:35px; height:35px;padding-left:29px;}
+.categories_nav .bd ul ul { padding-left:10px;}
+.categories_nav .bd ul li ul li { margin:0; line-height:27px; float:left; width:86px; }
+.categories_nav .bd ul li ul li a { 
+	color: #333;
+	font-size: 12px;
+	font-weight: normal;
+	padding-left: 8px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 8px;
+	background: url(../images/dian.gif) no-repeat 0 12px;
+	}
+.categories_nav .bd ul li ul li a:hover {
+	background:#0194E4;
+	color:#fff;
+	}
+.shop_module {}
+#shop_content{ width:100%;}
+#shop_content #listul{ padding:0; margin:0;}
+#shop_content li {font-size:12px;color:#000000; text-align:left; line-height:45px;}
+#shop_content li span{ float:right}
+#shop_content #listul li a:link,#cat_content #listul li a:visited {color: #000;
+display: inline-block;
+font-family: 'Microsoft Yahei';
+font-size: 16px;
+height: 45px;
+line-height: 45px;
+max-width: 580px;
+overflow: hidden;
+text-overflow: ellipsis;
+vertical-align: top;
+white-space: nowrap;}
+#shop_content #listul li a:hover {color:#ff0000;text-decoration:none;}
+#shop_content #listul strong{background-color: #D9534F;display: inline-block;padding: 4px;
+color: #fff;
+font-size: 14px;
+font-weight: normal;}
+#shop_content .box{ line-height:2em; margin-top:10px;padding-bottom:15px;color:#666;  margin-left:14px; }
+.shop_module .hd { padding:0 8px; border-top:2px solid #d8e8ef; height:25px; border-bottom:1px solid #d8e8ef; line-height:25px; color:#666;}
+.shop_module .hd a { text-decoration:underline;}
+.shop_module .hd span.left { display:inline; float:left; background:url(../images/icon.gif) no-repeat 0 -336px; padding-left:17px;}
+.shop_module .hd span.right { display:inline; float:right; color:#f30; background:url(../images/icon.gif) no-repeat 0 -369px; padding-left:20px;}
+.shop_module .bd { margin:10px; padding-right:0; background:url(../images/koubei_11.gif) repeat-y 240px 0;}
+.shop_module .bd li { float:left; width:241px; height:183px; display:inline; text-align:left;}
+.shop_module .bd li .list_module {padding:10px 15px 10px 16px; width:208px;}
+.orange { background:#fffae7; border:1px solid #fe8802;margin:-1px -1px 1px; position:relative;}
+.shop_module .bd li .pic { text-align:center;}
+.shop_module .bd li .pic img { display:block; margin:0 auto;}
+.shop_module .bd li b { text-align:center; display:block; background:#eeeeee; height:24px; line-height:24px; margin-top:10px;}
+.shop_module .bd li b a { color:#333; font-size:14px;}
+.shop_module .bd li span.cont { color:#666; display:block; margin-top:8px;}
+.shop_module .bd li .kut { margin-top:5px;}
+.shop_module .bd li .kut span.left { display:block; float:left;}
+.shop_module .bd li .kut span.right { display:inline; float:right; color:#8c1111; padding-left:20px; background:url(../images/icon.gif) no-repeat 0 -373px; font-weight:bold;}
+.address { margin-top:2px; background:#fdf8ec; border:1px solid #faecd9; height:25px; line-height:25px; text-align:left; padding:15px; border-bottom:#FF6B24 4px solid;}
+.address a { margin-right:10px; font-size:14px; padding:5px 10px; background-color:#faecd9}
+.address a:hover{ text-decoration:none; background:#F80; color:#fff;}
+.pagination_module .left { padding-left:24px;}
+.shop_list{ width:100%; margin:0; padding:0; float:left;}
+.shop_list li { padding:15px; border-bottom: #d1dfea dotted 1px; height:100px;}
+.jianbg1{background:#FCFCFC;}
+.jianbg1:hover {
+	background-color:#FFF5E8;
+	border-bottom:2px solid #CC0000;
+	border-top:2px solid #CC0000;
+	padding-bottom:14px;
+	padding-top:13px;
+	}
+.jianbg21{background:#fff;}
+.jianbg21:hover {
+	background-color:#FFF5E8;
+	border-bottom:2px solid #CC0000;
+	border-top:2px solid #CC0000;
+	padding-top:13px;
+	padding-bottom:14px;
+	}
+.shop_title_i{ width:100%; line-height:36px; height:36px; float:left;text-align:left;}
+.shop_title_i a{ font-size:18px; color:#25d;text-align: left;}
+.shop_title_i a:hover{ color:#f00; text-decoration:none; }
+.shop_title_i span{ color:#c00; float:right;}
+.shop_intro{ text-align:left; color:#909090; line-height:150%; font-family:Arial, Helvetica, sans-serif;}
+.shop_item{ width:100%; text-align:left;}
+.shop_item dt{ float:left; text-align:left; color:#999; font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:40px; height:35px; padding-left:2px; padding-right:15px;}
+.shop_item dt b{ color:#888}
+.shoplogo {MARGIN: auto;WIDTH: 120px;}
+.shop img{MAX-WIDTH: 100%!important;HEIGHT: auto!important;width:expression(this.width > 120 ? "120px" :     this.width)!important;}
+
+.shop_title_h {
+width:100%;
+margin: 0px auto 0px auto;
+background: #eeeff0;
+line-height: 51px;
+height: 51px;
+background:url(../images/dian_head.png) no-repeat;
+}
+.shop_dh_list {background:url(dh.gif) 10px 22px no-repeat;padding:0px 6px;margin:1px;text-align:left;font-weight:normal;font-size:14px;}
+.shop_dh_list b{font-size:22px; color:#444; float:left;}
+.shop_dh_list span {float:right; font-size:14px; margin-top:13px;}
+.shop_l_ad{ width:180px; height:180px; vertical-align:middle; text-align:center; font-size:45px; color:#fff; background:#ccc; margin:20px auto;}

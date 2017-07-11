@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><?=encode_output($seo['title'])?></title> 
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable"> 
+<meta content="black" name="apple-mobile-web-app-status-bar-style"> 
+<meta content="telephone=no" name="format-detection"> 
+<link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div id="main_body">
+	 <header class="s_header"  id="header">
+		<nav>
+        <span class="navt qq"><a href="./" class="r">返回首页</a></span>
+        <span class="userspan"><a href="index.php">信息</a><a href="article.php">公告</a><!-- <a href="com.php">商家</a> --></span>
+		</nav>
+	</header>
+
+
+<div class="line1"  style="color:#00598c; line-height:190%; background:#f6f6f6; width:100%; padding:12px 0;"><a href=".">首页</a> > 提示</div>
+<div class="line3"  style="color:#fff; line-height:190%; background:#f40; width:100%; font-size:140%; padding:5px 0; text-align:center">提示信息</div>
+<div class="line1" style="padding:30px 0; line-height:200%;">
+	<p style="font-size:16px;text-align:center;margin:0 auto"><?=encode_output($msg)?></p>
+	<p style="text-align:center;margin:0 auto">
+	<?if ($url=='goback' || $url==''){?>
+		<a href="javascript:history.back();" >[点击这里返回上一页]</a>
+	<?}else{?>
+		<a href="<?=urldecode($url)?>">如果您的浏览器没有自动跳转，请点击这里</a>
+		<script language="javascript">setTimeout("window.location.replace('<?=urldecode($url)?>')",'2000');</script>
+	<?}?>
+	</p>
+</div>
+<footer class="footer">
+	<a href="#header" class="back_top"><span></span>返回顶部</a>
+	<a href="">触屏版</a>
+	<a href="../">电脑版</a>
+</footer>	
+</body>
+</html>

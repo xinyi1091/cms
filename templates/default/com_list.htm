@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={$charset}" />
+<title>{$seo['title']}</title>
+<meta name="Keywords" content="{$seo['keywords']}">
+<meta name="Description" content="{$seo['description']}">
+<link href="templates/{$CFG[tplname]}/style/reset.css" type="text/css" rel="stylesheet" />
+<link href="templates/{$CFG[tplname]}/style/style.css" type="text/css" rel="stylesheet" />
+<link href="templates/{$CFG[tplname]}/style/com.css" type="text/css" rel="stylesheet" />
+<script src="js/common.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script> 
+<script type="text/javascript" charset="utf-8">
+		$(function() {
+			$("img").lazyload({
+				effect : "fadeIn"
+			});
+		});
+	</script>
+
+</head>
+<body class="home-page">
+<!--{template header}-->
+<div class="wrapper">
+<div id="content">
+<div class="shop_title_h"><div class="shop_dh_list"><b></b><span><a href="postcom.php" ><img src="templates/{$CFG[tplname]}/images/postcom.png"></a></span></div></div>
+        <div class="shop_all">
+        <div class="col_sub">
+				<div class="categories_nav">
+					<div class="hd">商家分类导航</div>
+					<div class="bd">
+						<ul>
+						
+						<li><span style="display: block"><a href="/com.php" class="xias">所有商家</a></span></li>
+						
+						
+						<!--{loop $com_cats $key=>$cat}-->
+						<li><span style="display: block"><a href="javascript:void({$key});" class="xias" onclick="showHide(this,'items{$key}');">{$cat['catname']}</a></span>
+						  <ul id="items{$key}" style="display: block;">
+							<!--{if !empty($cat[children])}-->		
+								<!--{loop $cat[children] $chi}-->
+									<li><a href="{$chi[url]}" >{$chi['name']}</a></li>
+								<!--{/loop}-->
+							<!--{/if}-->
+						  </ul>
+						</li>
+						<!--{/loop}-->
+						</ul>
+					</div>
+				</div>
+				
+				<div style="clear:both"></div>
+                <div class="shop_l_ad">AD</div>
+			</div>
+        
+        <div class="col_main">
+        <style>
+ .city_dh_list2{ width:100%; float:left; margin-top:12px;}
+ .city_dh_list2 li em{ float:left; height:30px; background:#de0909; color:#fff;line-height:30px; font-style:normal; padding:0 10px; font-size:14px; font-weight:bold;}
+ .city_dh_list{ width:100%; float:left; margin-top:12px;}
+.city_dh_list li{ float:left; height:30px; margin-left:6px; line-height:30px; margin-bottom:8px;}
+.city_dh_list li a{ font-size:16px; color:#02e;padding: 3px 12px; background:#f3f3f3;}
+.city_dh_list li a:hover{ color:#fff;background:#f60; }
+ </style>
+     	{if $area_arr}   
+   <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center" style="border-bottom:#ddd 1px solid;">
+  <tbody><tr>
+  <td></td><td width="100" valign="top"><div class="city_dh_list2"><ul><li><em>商家区域：</em></li></ul></div></td><td>
+  <div class="city_dh_list"><ul>
+  
+  <!--{loop $area_arr $val}-->
+						<li><a href={$val[url]}>{$val[areaname]}</a></li>
+					<!--{/loop}-->
+</ul></div>
+</td>
+  </tr>
+</tbody></table>  
+	{/if}  
+        
+ 
+<div class="shop_list">
+<ul>
+{php $t1=1}
+{loop $articles $val}
+{if $t1%2==0 }
+<li class="jianbg1"> {else} <li class="jianbg21">
+{/if}
+
+ <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" height="90">
+  <tr>
+    <td width="120" align="center">
+{if $val[thumb]}<img data-original="{$val[thumb]}" src="js/grey.gif" style="width:120px;height:90px;" alt="{$val[title]}">
+{else}<img  data-original="templates/{$CFG[tplname]}/images/nosmall.gif" src="js/grey.gif" style="width:120px;height:90px;" alt="{$val[title]}">
+{/if}</td>
+    <td valign="top" style="padding-left:15px">
+    <div class="shop_title_i"><span>{$val[postdate]}</span><a href="{$val[url]}" target="_blank">{$val[sname]}</a></div>
+    <p class="shop_intro">{$val[introduce]}...</p>
+    <div class="shop_item"><dt style="color:#080"><b>行业：</b>{$val[catname]}</dt><dt style="color:#e00"><b>电话：</b>{$val[phone]}</dt><dt><B>地址：</B>{$val[address]}</dt></div>
+</td>
+  </tr>
+</table>
+</li>
+{php $t1++}
+ {/loop} 
+
+</ul>
+</div>
+<div style="width:100%; clear:both"></div> 
+ <div class="pagination_module clearfix" style="margin-top:7px; padding:12px;">
+				<span class="right2" style="float:right;"><a href="#top" style="border:0; color:#fff;">返回顶部 ↑</a></span>
+				<span class="right2" style="float:left;"><!--{template page}--></span></span>	
+				
+			</div>  
+</Div>
+                    
+          
+</div>           
+                    
+ </div>
+ 
+         
+		</div>
+         
+      <div style="width:100%; clear:both"></div> 
+         
+  <!-- 主体 结束 -->
+	<!--{template footer}-->
+</div>

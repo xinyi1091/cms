@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><?=encode_output($seo['title'])?></title> 
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"> 
+<meta content="yes" name="apple-mobile-web-app-capable"> 
+<meta content="black" name="apple-mobile-web-app-status-bar-style"> 
+<meta content="telephone=no" name="format-detection"> 
+<link rel="stylesheet" href="css/common.css">
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/modernizr.custom.js"></script>
+<script src="js/jquery.dlmenu.js"></script>
+</head>
+<body>
+<div id="main_body"  class="loading">
+<header class="s_header"  id="header">
+<nav>
+<span class="navt qq"><?=encode_output($seo['title'])?></span>
+<span class="userspan"></span>
+</nav>
+<div id="dl-menu" class="dl-menuwrapper">
+<button id="dl-menu-button">Open Menu</button>
+<ul class="dl-menu">
+<li><a href="./" class="r">手机首页</a></li>
+<?php foreach($cats44 as $cat){ 
+echo " <li><a href=\"category.php?id=$cat[catid]\" class=\"r\">".encode_output($cat[catname])."</a></li>";
+}?></ul></div>
+<script>
+$(function() {
+$( '#dl-menu' ).dlmenu();
+});
+
+</script><!-- 响应式菜单 结束 -->
+</header>
+<nav class="s_nav">
+<section id="jt">
+<div id="nav">
+<ul><li><a href="./" class="r">手机首页</a></li>
+<li><a href="article.php">本地新闻</a></li>
+<li><a href="com.php">商家黄页</a></li>
+<li><a href="post.php">发布信息</a></li>
+</ul>
+</div>
+</section>
+</nav>
+
+<section class="s_moreread"><div class="cat-t"><h3><a href="<?php echo PHPMPS_PATH;?>wap/category.php?id=<?php echo $cat_info[catid];?>"><?php echo encode_output($cat_info[catname]);?></a></h3><span class="more"><a href="<?php echo PHPMPS_PATH;?>wap">返回首页</a></span></div></section>
+<section class="cat_s_box">
+<span class="live-icon">分类:</span>  
+<?php
+foreach((array)$cat_arr as $val){
+?>
+<a href="<?php echo PHPMPS_PATH;?>wap/category.php?id=<?php echo $val[id];?>"><?php echo encode_output($val[catname]);?></a>
+<?php
+}
+?>
+
+</section>
+<div id="content">
+ <dt id="entry-list" style="display: block;">
+ <?php
+foreach((array)$articles as $key=>$val){
+?>
+
+<dl><h3 class="title"><a href="view.php?id=<?php echo $val[id];?>"><?php echo encode_output($val[title]);?></a></h3><h4 class="updated"></h4><div class="description"><?php echo encode_output($val[description]);?></div><div class="actions"><a href="tel:<?php echo encode_output($val[phone]);?>" class="link3"><font color="#111111"><b><?php echo encode_output($val[phone]);?></b></font></a><span><font color="#ff8800"><?php echo encode_output($val[areaname]);?></font></span><span><font color="#009933"><?php echo encode_output($val[catname]);?></font></span><span class="goto-top"><?php echo encode_output($val[postdate]);?></span></div></dl>
+
+<?php
+}
+?>
+</dt></div>
+  <div id="content">
+ <dt id="entry-list" style="display: block;">
+ <dl>
+<div class="pages">
+<? include template('page');?>
+</div>
+ </dl>
+ </dt></div>
+
+
+
+<footer class="footer">
+	<a href="#header" class="back_top"><span></span>返回顶部</a>
+	<a href="">触屏版</a>
+	<a href="../">电脑版</a>
+</footer>	
+</div>
+</body>
+</html>
