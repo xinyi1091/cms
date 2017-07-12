@@ -41,13 +41,14 @@ switch ($_REQUEST['act'])
 		$description = trim($_REQUEST['desc']);
 		$cattplname  = $_REQUEST['cattplname'];
 		$viewtplname = $_REQUEST['viewtplname'];
-
+		//added by bian 2017-07-12
+		$needPay = intval($_REQUEST['needPay']);
 		if(empty($catorder)) {
 			$sql = "SELECT MAX(catorder) FROM {$table}category";
 			$maxorder = $db->getOne($sql);
 			$catorder = $maxorder + 1;
 		}
-		$sql = "INSERT INTO {$table}category (catname,keywords,description,parentid,catorder,cattplname,viewtplname) VALUES ('$catname','$keywords','$description','$parentid','$catorder','$cattplname','$viewtplname')";
+		$sql = "INSERT INTO {$table}category (catname,keywords,description,parentid,catorder,cattplname,viewtplname,needPay) VALUES ('$catname','$keywords','$description','$parentid','$catorder','$cattplname','$viewtplname','$needPay')";
 		$res = $db->query($sql);
 
 		clear_caches('phpcache');
@@ -63,7 +64,6 @@ switch ($_REQUEST['act'])
 		$viewtplname = showtpl('view','viewtplname', $cat['viewtplname']);
 		$sql  = "SELECT * FROM {$table}category WHERE parentid = '0'";
 	    $cats = $db->getAll($sql);
-
 		include tpl('edit_category');
 	break;
 
@@ -80,8 +80,10 @@ switch ($_REQUEST['act'])
 		$description = trim($_REQUEST['desc']);
 		$cattplname  = $_REQUEST['cattplname'];
 		$viewtplname = $_REQUEST['viewtplname'];
+		//added by bian 2017-07-12
+		$needPay = intval($_REQUEST['needPay']);
 
-		$sql = "UPDATE {$table}category SET catname='$catname',keywords='$keywords',description='$description',parentid='$parentid',catorder='$catorder',cattplname='$cattplname',viewtplname='$viewtplname' WHERE catid = '$catid'";
+		$sql = "UPDATE {$table}category SET catname='$catname',keywords='$keywords',description='$description',parentid='$parentid',catorder='$catorder',cattplname='$cattplname',viewtplname='$viewtplname',needPay='$needPay' WHERE catid = '$catid'";
 		$res = $db->query($sql);
 		
 		clear_caches('phpcache');

@@ -65,6 +65,15 @@ foreach ($cats AS $cats)
   <td><?=$viewtplname?></td>
 </tr>
 <tr>
+  <td align="right">是否需要付费浏览： </td>
+  <td>
+		<select name="needPay">
+			<option value="0" <?php if($cat['needPay']==0) echo "selected" ?>>不需要付费</option>
+			<option value="1" <?php if($cat['needPay']==1) echo "selected" ?>>需要付费</option>
+		</select>
+</td>
+</tr>
+<tr>
   <td align="right">关键词(keywords)： </td>
   <td><textarea name="keywords" cols="65" rows="5" id="keywords"><?=$cat[keywords]?></textarea></td>
 </tr>
