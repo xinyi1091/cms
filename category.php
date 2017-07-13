@@ -204,11 +204,20 @@ while($row=$db->fetchRow($res)) {
 if($info) {
 	foreach($info as $val) {
 		$infoid .= $val['id'].',';
+		$infoCatId .= $val['catid'].',';
 	}
 	$infoid = substr($infoid,0,-1);
+    $infoCatId = substr($infoCatId,0,-1);
+	$sql = "SELECT needPay FROM {$table}category LEFT JOIN {$table}info ON {$table}category.catid ={$table}info.catid WHERE {$table}category.catid in ($infoCatId)";
+	$res = $db->getAll($sql);
+	foreach($info as $key=>$val) {
+		foreach( $res as $key1=>$val1) {
+			$info[$key]['needPay'] = $val1['needPay'];
+		}
+	}
 	$info_custom = get_infos_custom($infoid);
 	foreach($info as $key=>$val) {
-		$info[$key]['custom'] = is_array($info_custom[$key]) ? $info_custom[$key] : array();
+		$info[$key]['custom'] = is_array($info_custom[$key]) ? $info_custom[$key] : array();	
 	}
 }
 
