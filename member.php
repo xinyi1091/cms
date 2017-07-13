@@ -153,10 +153,10 @@ switch($act)
 		}
 		$ip = get_ip();
 		$postarea = getPostArea($ip);
-		onlyarea($postarea);
+		onlyarea($postarea);//获得允许发布信息(注册)的地区
 
-		$verf = get_one_ver();
-		$mappoint = explode(',',$CFG[map]);
+		$verf = get_one_ver();//随机取得验证问题
+		$mappoint = explode(',',$CFG[map]);//地图设置的默认地区
 
 		$seo['title'] = "会员注册";
 		include template('register');
@@ -217,7 +217,11 @@ switch($act)
 		
 		if(empty($res)) {
 			if(register($username,$md5_password,$email)) {
-				if(!empty($CFG['register_credit']))credit_add($_SESSION['username'], $CFG['register_credit'],'register');
+			    //register_credit 注册送积分字段
+				if(!empty($CFG['register_credit'])){
+                    credit_add($_SESSION['username'], $CFG['register_credit'],'register');
+                    /*用户名,积分值,日志说明*/
+                }
 
 				$link='member.php';
 				showmsg("注册成功",$link);
@@ -226,7 +230,7 @@ switch($act)
 				showmsg("注册失败",$link);
 			}
 		}
-		login($username, $md5_password);
+		login($username, $md5_password);//直接登录
 		showmsg('注册成功', 'member.php');
 	break;
 
@@ -758,6 +762,8 @@ switch($act)
 		if($infouser != $_userid)showmsg('此信息不是您的账号发布的，无法操作');
 
 		if(!empty($_POST['submit'])) {
+		    /*
+		     * 用户名，信息币数值，日志信息*/
 			gold_diff($_username, $CFG['info_refer_gold'], 'info_refer');
 			$db->query("update {$table}info set postdate=".time()." where id='$id' ");
 			$url = url_rewrite('category', array('cid'=> $info['catid']));

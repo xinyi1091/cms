@@ -1422,7 +1422,8 @@ function get_domain($url)
 		}
 	}
 }
-
+/*
+ * 判断允许发布信息的地区*/
 function onlyarea($postarea)
 {
 	global $db,$table,$CFG;
@@ -1635,7 +1636,7 @@ function register($username, $password, $email)
 
 	$time = time();
 	$ip = get_ip();
-	$status = $CFG['reg_check'] == 1 ? 0 : 1;
+	$status = $CFG['reg_check'] == 1 ? 0 : 1;//会员注册是否需要审核，1是审核，0是不审核
 	$sql = "INSERT INTO {$table}member (username,password,email,registertime,registerip,lastlogintime,status) VALUES ('$username','$password','$email','$time','$ip','$time', '$status')";
 	$res = $db->query($sql);
 

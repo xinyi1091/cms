@@ -10,13 +10,32 @@
 <link href="templates/{$CFG[tplname]}/style/category.css" type="text/css" rel="stylesheet" />
 <script src="js/common.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
-<script src="js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script> 
+<script src="js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="js/layer/layer.js"></script>
 <script type="text/javascript" charset="utf-8">
 		$(function() {
 			$("img").lazyload({
 				effect : "fadeIn"
 			});
 		});
+        function layerOpen() {
+            layer.open({
+                icon: 0,
+                //shade: [0.8, '#393D49'],
+                skin: 'layui-layer-lan',
+                title:'消息',
+                content: '<span style="color:red;">本类信息仅供会员浏览，会员服务费10元每月</span>',
+                btn: ['去登陆', '购买'],
+                yes: function(){
+                    location.href='member.php?act=login'
+                },
+                btn2: function(){
+                    //按钮【按钮二】的回调
+                    window.open("member.php?act=payonline")
+                    //return false 开启该代码可禁止点击该按钮关闭
+                }
+            });
+        }
 	</script>
 
 </head>
@@ -96,7 +115,7 @@
 <td width="9%" rowspan="2" height="65" align="center" valign="middle">{if $val[thumb]}<img data-original="{$val[thumb]}" src="js/grey.gif" style="width:60px;height:60px; border-radius:5%; border:#fff 3px solid" alt="{$val[title]}">
 {else}<img  data-original="templates/{$CFG[tplname]}/images/nosmall.gif" src="js/grey.gif" style="width:60px;height:60px; border-radius:5%; border:#fff 3px solid" alt="{$val[title]}">
 {/if}</td>
-    <td width="72%" height="30"><a href="{$val[url]}" target="_blank">{$val[title]}</a>&nbsp;&nbsp;<font color="#ff5500" style="font-size:12px;">{$val[areaname]}</font>&nbsp;&nbsp;<font color="#007700">{$val[catname]}</font></td>
+    <td width="72%" height="30"><a href="{$val[url]}" target="_blank" onclick="layerOpen()">{$val[title]}</a>&nbsp;&nbsp;<font color="#ff5500" style="font-size:12px;">{$val[areaname]}</font>&nbsp;&nbsp;<font color="#007700">{$val[catname]}</font></td>
 <td width="10%" align="center"><span style="color:#f80;font-size:12px;">{$val[postdate]}</span></td>
 <td width="9%" align="center"><span style="color:#888;font-size:12px; padding-right:12px;">点击：{$val[click]}</span></td>
     
