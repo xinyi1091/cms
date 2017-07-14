@@ -27,6 +27,41 @@ switch($act)
 		$seo['title'] = "会员中心".' - '.$CFG['webname'];
 		$userinfo = member_info($_userid);
 		extract($userinfo);
+		/*
+		 * extract() 函数从数组中将变量导入到当前的符号表。
+                该函数使用数组键名作为变量名，使用数组键值作为变量值。针对数组中的每个元素，将在当前符号表中创建对应的一个变量。
+                第二个参数 type 用于指定当某个变量已经存在，而数组中又有同名元素时，extract() 函数如何对待这样的冲突。
+		比如:<?php
+                $a = "Original";
+                $my_array = array("a" => "Cat","b" => "Dog", "c" => "Horse");
+                extract($my_array);
+                echo "\$a = $a; \$b = $b; \$c = $c";
+            ?>
+		返回:$a = Cat; $b = Dog; $c = Horse
+		所以:得到数组后Array
+            (
+                [userid] => 7559
+                [uid] => 0
+                [username] => xinyi0713
+                [email] => hdkah@hkh.com
+                [password] => 482c811da5d5b4bc6d497ffa98491e38
+                [registertime] => 1499932750
+                [registerip] => 127.0.0.1
+                [lastlogintime] => 1499999485
+                [lastloginip] => 127.0.0.1
+                [sendmailtime] => 0
+                [qq] =>
+                [phone] =>
+                [address] =>
+                [mappoint] =>
+                [money] => 8
+                [gold] => 3
+                [credit] => 7
+                [lastposttime] => 1499935947
+                [status] => 1
+            )
+		利用extract($userinfo);可以直接有变量$registertime
+		*/
 		$registertime = date('Y年m月d日', $registertime);
 		if(empty($email) || empty($qq) || empty($phone))$notice=1;
 		include template('member');
@@ -455,7 +490,7 @@ switch($act)
 			$r['unit'] = $units[$r['type']];
 			$r['type'] = $types[$r['type']];
 			$r['note'] = !empty($notes[$r['note']]) ? $notes[$r['note']] : $r['note'];
-			$r['addtime'] = date('Y-m-d h:i:s', $r['addtime']);
+			$r['addtime'] = date('Y-m-d H:i:s', $r['addtime']);
 			$exchanges[] = $r;
 		}
 		$seo['title'] = '交易详情';

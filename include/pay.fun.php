@@ -19,7 +19,7 @@ function gold_add($username, $number, $note = '')
 	$db->query("INSERT INTO {$table}pay_exchange  (`username`,`type`,`value`,`note`,`addtime`,`ip`) VALUES('$username','gold','$number','$note','$time','$ip')");
 }
 
-function gold_diff($username, $number, $note = '', $authid = '')
+function gold_diff($username, $number, $note = '', $authid = '',$infoId='')
 {
 	global $db, $table;
 	$username = addslashes(stripslashes($username));
@@ -33,9 +33,24 @@ function gold_diff($username, $number, $note = '', $authid = '')
 	$time = time();
 	$ip = get_ip();
 	if($number > $gold) showmsg('您的金额不够支付');
-	$db->query("UPDATE {$table}member SET gold=gold-$number WHERE username='$username'");
-	$db->query("INSERT INTO {$table}pay_exchange  (`username`,`type`,`value`,`note`,`addtime`,`ip`) VALUES('$username','gold','-".$number."','$note','$time','$ip')");
-	
+	if($note == 'paymentInformation'){
+	    //付费浏览信息，查询表中是否有此信息，没有则插入；有则比较时间，如果大于一天则插入，否则不扣费
+        $sql="select infoid,addtime from {$table}pay_exchange where username='$username' and infoid='$infoId' ORDER BY addtime DESC limit 0,1";
+        $res = $db->getRow($sql);
+        if(!$res){
+            $db->query("UPDATE {$table}member SET gold=gold-$number WHERE username='$username'");
+            $db->query("INSERT INTO {$table}pay_exchange  (`username`,`type`,`value`,`note`,`addtime`,`ip`,`infoid`) VALUES('$username','gold','-".$number."','浏览付费文章编号".$infoId."扣除信息币','$time','$ip','$infoId')");
+        }else{
+            if($time - $res['addtime']>86400){
+                $db->query("UPDATE {$table}member SET gold=gold-$number WHERE username='$username'");
+                $db->query("INSERT INTO {$table}pay_exchange  (`username`,`type`,`value`,`note`,`addtime`,`ip`,`infoid`) VALUES('$username','gold','-".$number."','浏览付费文章编号".$infoId."扣除信息币','$time','$ip','$infoId')");
+            }
+        }
+    }else{
+        $db->query("UPDATE {$table}member SET gold=gold-$number WHERE username='$username'");
+        $db->query("INSERT INTO {$table}pay_exchange  (`username`,`type`,`value`,`note`,`addtime`,`ip`) VALUES('$username','gold','-".$number."','$note','$time','$ip')");
+    }
+
 	if($member['ispointdiffemail']) {
 		//$data = tpl_data('member','pointmailtpl');
 		sendmail($email, '确认会员金币变动邮件'.'('.$CFG['sitename'].')', stripslashes($data));

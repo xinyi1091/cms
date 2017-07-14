@@ -1,7 +1,10 @@
 <?php
 define('IN_PHPMPS', true);
 require dirname(__FILE__) . '/include/common.php';
-
+$php_referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+if(empty($php_referer)){
+    showmsg('非法访问！','index.php');
+}
 $id = $_REQUEST['id'] ? intval($_REQUEST['id']) : '';
 if(empty($id)) showmsg('缺少参数！');
 $sql = "SELECT a.*,m.username FROM {$table}info AS a LEFT JOIN {$table}member AS m ON m.userid=a.userid WHERE a.id='$id'";
@@ -48,6 +51,7 @@ if(!$CFG['expired_view']) {
 		$qq=empty($qq) ? '' : '已过期';
 	}
 }
+$thisYear = date("Y");
 $postdate = date('Y年m月d日', $postdate);
 $lastdate = enddate($enddate);
 $mappoint = $mappoint ? explode(',', $mappoint) : '';

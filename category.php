@@ -16,7 +16,61 @@
 
 define('IN_PHPMPS', true);
 require dirname(__FILE__) . '/include/common.php';
-
+//处理扣除信息币信息 added by bian
+require PHPMPS_ROOT . 'include/pay.fun.php';
+$act = $_REQUEST['act'] ? trim($_REQUEST['act']) : '';
+if($act == "gold_diff"){
+    $memberUserId = !empty($_REQUEST[userid])?intval($_REQUEST[userid]):0;
+    $memberPostToken = !empty($_REQUEST[token])?trim($_REQUEST[token]):'';
+    $memberInfoId = !empty($_REQUEST[infoid])?intval($_REQUEST[infoid]):0;
+    if(empty($memberUserId) || empty($memberPostToken) || empty($memberInfoId)){
+        $data = array(
+            'error'=>1,
+            'content'=>'The request parameters are incomplete',
+        );
+    }else{
+        $sql = "select username,password from {$table}member where userid = $memberUserId";
+        $res = $db->getRow($sql);
+        if(!$res){
+            $data = array(
+                'error'=>2,
+                'content'=>'You have a wrong userid',
+            );
+        }else{
+            $memberUserName = $res['username'];
+            $memberPass = $res['password'];
+        }
+        //计算token
+        $memberCalculatedToken = md5(substr($memberPass, 1,10).$memberUserId);
+        if($memberPostToken !== $memberCalculatedToken){
+            $data = array(
+                'error'=>3,
+                'content'=>'Illegal request',
+            );
+        }
+        $sql = "select id from {$table}info where id = $memberInfoId";
+        $resInfoId = $db->getOne($sql);
+        if(!$resInfoId){
+            $data = array(
+                'error'=>4,
+                'content'=>'You have a wrong infoid',
+            );
+        }else{
+            if(gold_diff($memberUserName, 1, 'paymentInformation','',$resInfoId)){
+                $data = array(
+                    'error'=>200,
+                    'content'=>'The success of the information coin is deducted ',//json_encode 只支持utf-8编码，所以content会输出null，可以用iconv处理下
+                );
+            }else{
+                $data = array(
+                    'error'=>201,
+                    'content'=>'An error occurred. Please try again later ',
+                );
+            }
+        }
+    }
+    die(json_encode($data));
+}
 $catid = $_REQUEST['id'] ? intval($_REQUEST['id']) : '';
 $areaid = $_REQUEST['area'] ? intval($_REQUEST['area']) : '';
 
@@ -188,7 +242,7 @@ $sql = "SELECT COUNT(*) FROM {$table}info as i WHERE is_check=1 $cat_sql $area_s
 $count = $db->getOne($sql);
 $size = '10';
 $pager = page('category', $catid, $areaid, $count, $size, $page);
-$sql = "SELECT id,title,postdate,enddate,catid,areaid,thumb,description,click FROM {$table}info WHERE is_check=1 $cat_sql $area_sql $top_info_sql ORDER BY postdate DESC limit $pager[start], $pager[size]";
+$sql = "SELECT id,userid,title,postdate,enddate,catid,areaid,thumb,description,click FROM {$table}info WHERE is_check=1 $cat_sql $area_sql $top_info_sql ORDER BY postdate DESC limit $pager[start], $pager[size]";
 $res = $db->query($sql);
 $info = array();
 while($row=$db->fetchRow($res)) {
@@ -215,11 +269,21 @@ if($info) {
         $new_resarr[$val1['id']]=$val1['needPay'];
     }
 	$info_custom = get_infos_custom($infoid);
+    //获取会员信息 s
+    $userinfo = member_info($_userid);
+    $memberToken = md5(substr($userinfo['password'], 1,10).$_userid);//token，在调用接口时判断，避免非法调用
+    $memberGold = empty($_userid)?0:$userinfo['gold'];
+    //获取会员信息 e
 	foreach($info as $key=>$val) {
+        $info[$key]['memberInfo'] = $_userid;//存储是否登录信息，值为0则没有登录，否则传入用户的userid
+        $info[$key]['isMemberGoldEnough'] =($memberGold>0)?1:0 ;//会员的信息币信息是否充足，充足为1，否则为0
+        //判断是否是本人发布的信息,是本人为1，不是本人为0
+        $info[$key]['isMemberSelf']= ($info[$key]['userid']==$_userid)?1:0;
         $info[$key]['needPay'] = $new_resarr[$key];
 		$info[$key]['custom'] = is_array($info_custom[$key]) ? $info_custom[$key] : array();
 	}
 }
+
 
 $cat_pro = get_info($cats, $areas, '8', 'pro','','10'); //推荐信息
 $cat_hot = get_info($cats, $areas, '8', '','click','10'); //热门信息
@@ -229,7 +293,6 @@ $here = get_here($here_arr);
 $seo['title'] = $area_info['areaname'] . $cat_info['catname'] .'，'. '信息列表'.' - '.$CFG['webname'];
 $seo['keywords'] = $area_info['areaname'].$cat_info['keywords'];
 $seo['description'] = $cat_info['description'];
-
 $template = $cat_info['cattplname'] ? $cat_info['cattplname'] : 'category';
 include template($template);
 ?>
