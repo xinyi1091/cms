@@ -140,7 +140,7 @@ if($catid) {
 		$cats = $catid;
 	}
 	$cat_sql = " and catid in ($cats) ";
-	$cat_custom = cat_search_custom($catid);
+	$cat_custom = cat_search_custom($catid);//该方法的sql有个where条件where is_top>=time() 所以一般是不会取到值的
 	$top_info = get_top_info($cats, $top_type);
 	if(!empty($top_info)) {
 		foreach((array)$top_info as $val) {
@@ -242,6 +242,7 @@ $sql = "SELECT COUNT(*) FROM {$table}info as i WHERE is_check=1 $cat_sql $area_s
 $count = $db->getOne($sql);
 $size = '10';
 $pager = page('category', $catid, $areaid, $count, $size, $page);
+//sql edited by bian 多取了一个userid
 $sql = "SELECT id,userid,title,postdate,enddate,catid,areaid,thumb,description,click FROM {$table}info WHERE is_check=1 $cat_sql $area_sql $top_info_sql ORDER BY postdate DESC limit $pager[start], $pager[size]";
 $res = $db->query($sql);
 $info = array();
@@ -258,16 +259,18 @@ while($row=$db->fetchRow($res)) {
 if($info) {
 	foreach($info as $val) {
 		$infoid .= $val['id'].',';
-		$infoCatId .= $val['catid'].',';
+		$infoCatId .= $val['catid'].',';//added by bian  新增 如:125,120,120,120,120,124,
 	}
 	$infoid = substr($infoid,0,-1);
-    $infoCatId = substr($infoCatId,0,-1);
+	//added by bian s
+    $infoCatId = substr($infoCatId,0,-1);//为了去掉最后一个逗号，变为125,120,120,120,120,124
 	$sql = "SELECT {$table}info.id,{$table}category.needPay FROM {$table}category LEFT JOIN {$table}info ON {$table}category.catid ={$table}info.catid WHERE {$table}category.catid in ($infoCatId) ORDER BY {$table}info.postdate DESC";
 	$res = $db->getAll($sql);
     $new_resarr = array();
     foreach( $res as $key1=>$val1) {
         $new_resarr[$val1['id']]=$val1['needPay'];
     }
+    //added by bian e
 	$info_custom = get_infos_custom($infoid);
     //获取会员信息 s
     $userinfo = member_info($_userid);
@@ -280,13 +283,14 @@ if($info) {
         //判断是否是本人发布的信息,是本人为1，不是本人为0
         $info[$key]['isMemberSelf']= ($info[$key]['userid']==$_userid)?1:0;
         $info[$key]['needPay'] = $new_resarr[$key];
+        //e
 		$info[$key]['custom'] = is_array($info_custom[$key]) ? $info_custom[$key] : array();
 	}
 }
 
 
-$cat_pro = get_info($cats, $areas, '8', 'pro','','10'); //推荐信息
-$cat_hot = get_info($cats, $areas, '8', '','click','10'); //热门信息
+$cat_pro = get_info($cats, $areas, '8', 'pro','','10','','',$_userid); //推荐信息
+$cat_hot = get_info($cats, $areas, '8', '','click','10','','',$_userid); //热门信息
 
 
 $here = get_here($here_arr);

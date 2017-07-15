@@ -958,7 +958,7 @@ function get_link_list()
 	return $links;
 }
 
-function get_info($cat='',$area='',$num='10',$protype='',$listtype='',$len='20',$thumb='', $dateformat='y-m-d')
+function get_info($cat='',$area='',$num='10',$protype='',$listtype='',$len='20',$thumb='', $dateformat='y-m-d',$userid='0')
 {
 	global $db,$table;
 	
@@ -999,7 +999,7 @@ function get_info($cat='',$area='',$num='10',$protype='',$listtype='',$len='20',
 	}
 	if(empty($order)) $order = "order by postdate desc";
 	$limit = " LIMIT 0,$num ";
-	$sql = "select i.id,i.title,i.postdate,i.thumb,i.description,i.catid,i.phone,i.areaid,i.click,c.catname,a.areaname from {$table}info as i left join {$table}category as c on i.catid = c.catid left join {$table}area as a on a.areaid = i.areaid $where $order $limit";
+	$sql = "select i.id,i.userid,i.title,i.postdate,i.thumb,i.description,i.catid,i.phone,i.areaid,i.click,c.catname,a.areaname,c.needPay from {$table}info as i left join {$table}category as c on i.catid = c.catid left join {$table}area as a on a.areaid = i.areaid $where $order $limit";
 	$res = $db->query($sql);
 	$info = array();
 	while($row=$db->fetchRow($res)) {
@@ -1010,6 +1010,16 @@ function get_info($cat='',$area='',$num='10',$protype='',$listtype='',$len='20',
 		$row['areaurl']  = url_rewrite('category',array('eid'=>$row['areaid']));
 		$info[]          = $row;
 	}
+	//added by bian 增加对是否付费的判断
+    //获取会员信息 s
+    $userinfo = member_info($userid);
+    $memberGold = empty($userid)?0:$userinfo['gold'];
+    foreach($info as $key=>$val) {
+        $info[$key]['memberInfo'] = $userid;//存储是否登录信息，值为0则没有登录，否则传入用户的userid
+        $info[$key]['isMemberGoldEnough'] =($memberGold>0)?1:0 ;//会员的信息币信息是否充足，充足为1，否则为0
+        //判断是否是本人发布的信息,是本人为1，不是本人为0
+        $info[$key]['isMemberSelf']= ($info[$key]['userid']==$userid)?1:0;
+    }
 	return $info;
 }
 
@@ -2021,30 +2031,33 @@ function get_index_article($num='5')
 
 
 function get_top_info($catids, $top_type)
-{ global $db,$table;
-if(empty($catids)) return '';
-$sql = "select id,title,postdate,enddate,c.catname,a.areaname,thumb,i.description,i.click from {$table}info as i left join {$table}category as c on c.catid=i.catid left join {$table}area as a on a.areaid=i.areaid where is_top>=".time()." and top_type='$top_type' and is_check=1 and i.catid in ($catids) order by postdate desc ";
-$res = $db->query($sql);
-$top_info = array();
-while($row=$db->fetchrow($res)) {
-$row['url'] = url_rewrite('view',array('vid'=>$row['id']));
-$row['postdate'] = date('y年m月d日', $row['postdate']);
-$row['intro'] = cut_str($row['description'], 50);
-$row['lastdate'] = enddate($row['enddate']);
-$top_info[$row['id']] = $row;
- }
+{
+    global $db,$table;
+    if(empty($catids)){
+        return '';
+    }
+    $sql = "select id,title,postdate,enddate,c.catname,a.areaname,thumb,i.description,i.click from {$table}info as i left join {$table}category as c on c.catid=i.catid left join {$table}area as a on a.areaid=i.areaid where is_top>=".time()." and top_type='$top_type' and is_check=1 and i.catid in ($catids) order by postdate desc ";
+    $res = $db->query($sql);
+    $top_info = array();
+    while($row=$db->fetchrow($res)) {
+        $row['url'] = url_rewrite('view',array('vid'=>$row['id']));
+        $row['postdate'] = date('y年m月d日', $row['postdate']);
+        $row['intro'] = cut_str($row['description'], 50);
+        $row['lastdate'] = enddate($row['enddate']);
+        $top_info[$row['id']] = $row;
+     }
 
- if($top_info) {
-foreach($top_info as $article) {
- $infoid .= $article['id'].',';
-}
- $infoid = substr($infoid,0,-1);
- $info_custom = get_infos_custom($infoid);
-foreach($top_info as $key=>$article) {
-$top_info[$key]['custom'] = is_array($info_custom[$key]) ? $info_custom[$key] : array();
-}
-}
-return $top_info;
+     if($top_info) {
+        foreach($top_info as $article) {
+            $infoid .= $article['id'].',';
+        }
+        $infoid = substr($infoid,0,-1);
+        $info_custom = get_infos_custom($infoid);
+        foreach($top_info as $key=>$article) {
+            $top_info[$key]['custom'] = is_array($info_custom[$key]) ? $info_custom[$key] : array();
+        }
+    }
+    return $top_info;
 }
 //取得多个信息的附加属性
 function get_infos_custom($infoid)
