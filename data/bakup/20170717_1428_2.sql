@@ -1,6 +1,6 @@
 # phpmps bakfile
 # version:2.3
-# time:2017-07-15 22:24:03
+# time:2017-07-17 11:17:25
 # --------------------------------------------------------
 
 
@@ -16953,6 +16953,12 @@ INSERT INTO zj_pay_exchange VALUES('32246','xinyi0713','gold','-1','ä¯ÀÀ¸¶·ÑÎÄÕÂ
 INSERT INTO zj_pay_exchange VALUES('32247','xinyi0713','gold','-1','ä¯ÀÀ¸¶·ÑÎÄÕÂ±àºÅ436¿Û³ýÐÅÏ¢±Ò','1500116936','127.0.0.1','436');
 INSERT INTO zj_pay_exchange VALUES('32248','xinyi0713','money','-1','money2gold','1500116974','127.0.0.1','0');
 INSERT INTO zj_pay_exchange VALUES('32249','xinyi0713','gold','2','money2gold','1500116974','127.0.0.1','0');
+INSERT INTO zj_pay_exchange VALUES('32250','xinyi0713','credit','1','login','1500257256','127.0.0.1','0');
+INSERT INTO zj_pay_exchange VALUES('32251','xinyi0713','gold','-2','ä¯ÀÀ¸¶·ÑÎÄÕÂ±àºÅ11216¿Û³ýÐÅÏ¢±Ò','1500259760','127.0.0.1','11216');
+INSERT INTO zj_pay_exchange VALUES('32252','xinyi0713','money','-3','money2gold','1500259814','127.0.0.1','0');
+INSERT INTO zj_pay_exchange VALUES('32253','xinyi0713','gold','6','money2gold','1500259814','127.0.0.1','0');
+INSERT INTO zj_pay_exchange VALUES('32254','xinyi0713','gold','-2','ä¯ÀÀ¸¶·ÑÎÄÕÂ±àºÅ423¿Û³ýÐÅÏ¢±Ò','1500260251','127.0.0.1','423');
+INSERT INTO zj_pay_exchange VALUES('32255','xinyi0713','gold','-3','ä¯ÀÀ¸¶·ÑÎÄÕÂ±àºÅ436¿Û³ýÐÅÏ¢±Ò','1500260293','127.0.0.1','436');
 
 DROP TABLE IF EXISTS zj_pay_online;
 CREATE TABLE `zj_pay_online` (
@@ -16992,7 +16998,7 @@ CREATE TABLE `zj_payment` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=gbk;
 
-INSERT INTO zj_payment VALUES('1','alipay','Ö§¸¶±¦','http://img.alipay.com/img/logo/logo_126x37.gif','http://www.alipay.com/cooperate/gateway.do','http://www.tzxx.cc/respond.php','2088002061243121','abcde','1','phpmps@qq.com','1');
+INSERT INTO zj_payment VALUES('1','alipay','Ö§¸¶±¦','http://img.alipay.com/img/logo/logo_126x37.gif','http://www.alipay.com/cooperate/gateway.do','http://shzhongjia.com/respond.php','2088002061243121','abcde','1','phpmps@qq.com','1');
 
 DROP TABLE IF EXISTS zj_report;
 CREATE TABLE `zj_report` (

@@ -12,8 +12,8 @@ $desc  = htmlspecialchars($CFG['description']);
 $image =  $uri.'templates/'.$CFG['tplname'].'/images/logo.gif';
 
 $rss = new RSSBuilder($charset, $uri, $webname, $desc, $image);
-$rss->addDCdata('', 'http://www.tzxx.cc', date('r'));
-$rss->addSYdata('', 'http://www.tzxx.cc', date('Y'));
+$rss->addDCdata('', '$CFG["weburl"]', date('r'));
+$rss->addSYdata('', '$CFG["weburl"]', date('Y'));
 
 $sql = "select i.id,i.title,i.postdate,i.description,c.catid,c.catname from {$table}info as i left join {$table}category as c on i.catid = c.catid where i.is_check = 1 $cat order by i.id desc limit 30";
 if($res = $db->query($sql)) {
