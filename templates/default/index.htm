@@ -50,7 +50,7 @@
 									icon: 0,
 									skin: 'layui-layer-lan',
 									title:'消息',
-									content: '<span style="color:red;" id="layerSpan">本类信息需付费，每条<i style="color:blue;">1</i>信息币.继续浏览将付费(24小时内重复浏览不会重复计费)</span>',
+									content: '<span style="color:red;" id="layerSpan">本类信息需付费，每条<i style="color:blue;">{$CFG["info_gold_diff"]}</i>信息币.继续浏览将付费(24小时内重复浏览不会重复计费)</span>',
 									btn: ['确认', '取消'],
 									yes: function(){
 										$.ajax({
@@ -74,7 +74,7 @@
 									icon: 0,
 									skin: 'layui-layer-lan',
 									title:'消息',
-									content: '<span style="color:red;">本类信息需付费，每条<i style="color:blue;">1</i>信息币.但您的费用不足，确认将会跳转到购买信息币页面</span>',
+									content: '<span style="color:red;">本类信息需付费，每条<i style="color:blue;">{$CFG["info_gold_diff"]}</i>信息币.但您的费用不足，确认将会跳转到购买信息币页面</span>',
 									btn: ['确认', '取消'],
 									yes: function(){
 										location.href='member.php?act=gold'
@@ -87,7 +87,7 @@
 							icon: 0,
 							skin: 'layui-layer-lan',
 							title:'消息',
-							content: '<span style="color:red;">本类信息需付费，每条<i style="color:blue;">1</i>信息币.请先登录</span>',
+							content: '<span style="color:red;">本类信息需付费，每条<i style="color:blue;">{$CFG["info_gold_diff"]}</i>信息币.请先登录</span>',
 							btn: ['登录', '取消'],
 							yes: function(){
 								location.href='member.php?act=login'

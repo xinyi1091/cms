@@ -960,7 +960,7 @@ function get_link_list()
 
 function get_info($cat='',$area='',$num='10',$protype='',$listtype='',$len='20',$thumb='', $dateformat='y-m-d',$userid='0')
 {
-	global $db,$table;
+	global $db,$table,$CFG;
 	
 	$where = "where is_check=1 and (enddate='0' or enddate >= ".time().")";
 
@@ -1016,7 +1016,7 @@ function get_info($cat='',$area='',$num='10',$protype='',$listtype='',$len='20',
     $memberGold = empty($userid)?0:$userinfo['gold'];
     foreach($info as $key=>$val) {
         $info[$key]['memberInfo'] = $userid;//存储是否登录信息，值为0则没有登录，否则传入用户的userid
-        $info[$key]['isMemberGoldEnough'] =($memberGold>0)?1:0 ;//会员的信息币信息是否充足，充足为1，否则为0
+        $info[$key]['isMemberGoldEnough'] =($memberGold>=$CFG['info_gold_diff'])?1:0 ;//会员的信息币信息是否充足，充足为1，否则为0
         //判断是否是本人发布的信息,是本人为1，不是本人为0
         $info[$key]['isMemberSelf']= ($info[$key]['userid']==$userid)?1:0;
     }

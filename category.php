@@ -56,7 +56,7 @@ if($act == "gold_diff"){
                 'content'=>'You have a wrong infoid',
             );
         }else{
-            if(gold_diff($memberUserName, 1, 'paymentInformation','',$resInfoId)){
+            if(gold_diff($memberUserName,$CFG['info_gold_diff'], 'paymentInformation','',$resInfoId)){
                 $data = array(
                     'error'=>200,
                     'content'=>'The success of the information coin is deducted ',//json_encode 只支持utf-8编码，所以content会输出null，可以用iconv处理下
@@ -279,7 +279,7 @@ if($info) {
     //获取会员信息 e
 	foreach($info as $key=>$val) {
         $info[$key]['memberInfo'] = $_userid;//存储是否登录信息，值为0则没有登录，否则传入用户的userid
-        $info[$key]['isMemberGoldEnough'] =($memberGold>0)?1:0 ;//会员的信息币信息是否充足，充足为1，否则为0
+        $info[$key]['isMemberGoldEnough'] =($memberGold>=$CFG['info_gold_diff'])?1:0 ;//会员的信息币信息是否充足，充足为1，否则为0
         //判断是否是本人发布的信息,是本人为1，不是本人为0
         $info[$key]['isMemberSelf']= ($info[$key]['userid']==$_userid)?1:0;
         $info[$key]['needPay'] = $new_resarr[$key];

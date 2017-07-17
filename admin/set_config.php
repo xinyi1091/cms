@@ -73,6 +73,7 @@ switch($_REQUEST['act'])
 		$_POST['post_comment_credit'] = intval($_POST['post_comment_credit']);
 		$_POST['credit2gold']		  = intval($_POST['credit2gold']);
 		$_POST['money2gold']		  = intval($_POST['money2gold']);
+        $_POST['info_gold_diff']		  = intval($_POST['info_gold_diff']);//added by bian
 
 		$_POST['max_login_credit']   = intval($_POST['max_login_credit']);
 		$_POST['max_comment_credit'] = intval($_POST['max_comment_credit']);
@@ -86,7 +87,7 @@ switch($_REQUEST['act'])
 		$_POST['com_thumbwidth'] = floatval($_POST['com_thumbwidth']);
 		$_POST['com_thumbheight']	= floatval($_POST['com_thumbheight']);
 		
-		if($_POST['weburl']=='' || $_POST['weburl']=="http://www.tzxx.cc") {
+		if($_POST['weburl']=='') {
 			$_POST['weburl'] = get_url();
 		}
 		unset($_POST['act']);
@@ -101,7 +102,7 @@ switch($_REQUEST['act'])
 			$res = $db->query($sql);
 			$res ? $msg.='' : $msg.='1';
 		}
-		empty($msg) ? $msg = "修改配制成功": $msg = "修改配制失败";
+		empty($msg) ? $msg = "修改配置成功": $msg = "修改配置失败";
 		admin_log("$msg");
 		clear_caches('phpcache');
 		$link = "set_config.php";
