@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 define('UC_CLIENT_VERSION', '1.5.0');	//note UCenter 版本标识
 define('UC_CLIENT_RELEASE', '20081031');
 define('API_DELETEUSER', 1);		//note 用户删除 API 接口开关
@@ -107,14 +107,14 @@ class uc_note
 				
 				$sql = "SELECT thumb FROM {$table}info WHERE infoid = '$info[id]' ";
 				$thumb = $db->getOne($sql);
-				@unlink(PHPMPS_ROOT . $thumb);
+				@unlink(BIANMPS_ROOT . $thumb);
 
 				//删除所有图片
 				$sql = "select * from {$table}info_image where infoid='$info[id]'";
 				$res = $db->query($sql);
 				while($row=$db->fetchrow($res)) {
-					if($row['path'] != '' && is_file(PHPMPS_ROOT.$row['path']))
-					@unlink(PHPMPS_ROOT.$row['path']);
+					if($row['path'] != '' && is_file(BIANMPS_ROOT.$row['path']))
+					@unlink(BIANMPS_ROOT.$row['path']);
 				}
 
 				//删除图片数据库记录

@@ -1,7 +1,7 @@
 <?php
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
-if($CFG['uc'])require PHPMPS_ROOT . 'include/uc.inc.php';
+if($CFG['uc'])require BIANMPS_ROOT . 'include/uc.inc.php';
 chkadmin('member');
 $_REQUEST['act'] = $_REQUEST['act'] ? trim($_REQUEST['act']) : 'list' ;
 
@@ -88,8 +88,8 @@ switch ($_REQUEST['act'])
 				$sql = "select * from {$table}info_image where infoid='$info[id]'";
 				$res = $db->query($sql);
 				while($row=$db->fetchrow($res)) {
-					if($row['path'] != '' && is_file(PHPMPS_ROOT.$row['path']))
-					@unlink(PHPMPS_ROOT.$row['path']);
+					if($row['path'] != '' && is_file(BIANMPS_ROOT.$row['path']))
+					@unlink(BIANMPS_ROOT.$row['path']);
 				}
 
 				//É¾³ýÍ¼Æ¬Êý¾Ý¿â¼ÇÂ¼

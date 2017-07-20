@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
 
 chkadmin('flash');
@@ -40,7 +40,7 @@ switch ($_REQUEST['act'])
                 $name .= chr(mt_rand(97, 122));
             }
             $name .= '.' . end(explode('.', $_FILES['file']['name']));
-            $to    = PHPMPS_ROOT . 'data/flashimage/' . $name;
+            $to    = BIANMPS_ROOT . 'data/flashimage/' . $name;
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $to)){
                 $image = "data/flashimage/" . $name;
@@ -78,7 +78,7 @@ switch ($_REQUEST['act'])
                 $name .= chr(mt_rand(97, 122));
             }
             $name .= '.' . end(explode('.', $_FILES['file']['name']));
-            $to    = PHPMPS_ROOT . 'data/flashimage/' . $name;
+            $to    = BIANMPS_ROOT . 'data/flashimage/' . $name;
 
             if (move_uploaded_file($_FILES['file']['tmp_name'], $to)){
                 $image = "data/flashimage/" . $name;
@@ -103,8 +103,8 @@ switch ($_REQUEST['act'])
 		if(empty($id))show('没有选择记录');
 		$sql = "SELECT image FROM {$table}flash WHERE id='$id' ";
 		$image = $db->getOne($sql);
-		if($image != '' && is_file(PHPMPS_ROOT.$image)) {
-			@unlink(PHPMPS_ROOT.$image);
+		if($image != '' && is_file(BIANMPS_ROOT.$image)) {
+			@unlink(BIANMPS_ROOT.$image);
 		}
 		$sql = "DELETE FROM {$table}flash WHERE id='$id'";
 	    $res = $db->query($sql);

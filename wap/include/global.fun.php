@@ -1,6 +1,6 @@
 <?php
 
-if(!defined('IN_PHPMPS'))
+if(!defined('IN_BIANMPS'))
 {
 	die('Access Denied');
 }
@@ -517,7 +517,7 @@ function iconvs($from_encoding, $to_encoding, $str_or_array)
 			return $converarray;
 		}
 	} else {
-		require_once PHPMPS_ROOT."include/convert.class.php";
+		require_once BIANMPS_ROOT."include/convert.class.php";
 		$chs = new chinese();
 		$charset=array("utf8","gb2312","big5","unicode","pinyin");
 		if(!in_array($from_encoding,$charset)) {
@@ -560,8 +560,8 @@ function template($file)
 {
 	global $CFG;
 	
-	$compiledfile = PHPMPS_ROOT.'data/compiled/'.$file.'.php';
-	$tplfile = PHPMPS_ROOT.'/templates/'.$CFG['tplname'].'/'.$file.'.htm';
+	$compiledfile = BIANMPS_ROOT.'data/compiled/'.$file.'.php';
+	$tplfile = BIANMPS_ROOT.'/templates/'.$CFG['tplname'].'/'.$file.'.htm';
 	if(!file_exists($compiledfile) || @filemtime($tplfile) > @filemtime($compiledfile)) {
 		template_compile($tplfile, $compiledfile);
 	}
@@ -589,11 +589,11 @@ function clear_caches($type = 'phpcache', $ext = '')
     $tmp_dir = 'data';
     
     if ($type=='phpcache') {
-        $dirs = array(PHPMPS_ROOT . $tmp_dir . '/phpcache/');
+        $dirs = array(BIANMPS_ROOT . $tmp_dir . '/phpcache/');
     }  elseif ($type=='sqlcache') {
-        $dirs = array(PHPMPS_ROOT . $tmp_dir . '/sqlcache/');
+        $dirs = array(BIANMPS_ROOT . $tmp_dir . '/sqlcache/');
     } elseif ($type=='compiled') {
-        $dirs = array(PHPMPS_ROOT . $tmp_dir . '/compiled/');
+        $dirs = array(BIANMPS_ROOT . $tmp_dir . '/compiled/');
     }
     $str_len = strlen($ext);
     $count   = 0;
@@ -1303,7 +1303,7 @@ function template_parse($tpl)
 	$tpl = preg_replace("/\{(\\$[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)\}/","<?php echo \\1;?>",$tpl);
 	$tpl = preg_replace("/\{(\\$[a-zA-Z0-9_\[\]\'\"\$\x7f-\xff]+)\}/es", "addquote('<?php echo \\1;?>')",$tpl);
 	$tpl = preg_replace("/\{([A-Z_\x7f-\xff][A-Z0-9_\x7f-\xff]*)\}/s", "<?php echo \\1;?>",$tpl);
-	$tpl = "<?php if(!defined('IN_PHPMPS'))die('Access Denied'); ?>".$tpl;
+	$tpl = "<?php if(!defined('IN_BIANMPS'))die('Access Denied'); ?>".$tpl;
 	return $tpl;
 }
 
@@ -1361,7 +1361,7 @@ function read_cache($filename)
     if (!empty($result[$filename])) {
         return $result[$filename];
     }
-    $filepath = PHPMPS_ROOT . 'data/phpcache/' . $filename . '.php';
+    $filepath = BIANMPS_ROOT . 'data/phpcache/' . $filename . '.php';
     if (file_exists($filepath)) {
         include_once($filepath);
         $result[$filename] = $data;
@@ -1373,7 +1373,7 @@ function read_cache($filename)
 
 function write_cache($filename, $val)
 {
-    $filepath = PHPMPS_ROOT . 'data/phpcache/' . $filename . '.php';
+    $filepath = BIANMPS_ROOT . 'data/phpcache/' . $filename . '.php';
     $content  = "<?php\r\n";
     $content .= "\$data = " . var_export($val, true) . ";\r\n";
     $content .= "?>";
@@ -1442,7 +1442,7 @@ function getPostArea($ip)
 {
 	global $charset;
 	
-	require_once PHPMPS_ROOT . 'include/ip.class.php';
+	require_once BIANMPS_ROOT . 'include/ip.class.php';
 	$cha = new ip();
 	$address = $cha->getaddress($ip);
 	$postarea = $address["area1"].$address["area2"];
@@ -1655,7 +1655,7 @@ function uc_call($func, $params=null)
 {
     restore_error_handler();
     if (!function_exists($func)) {
-        include_once(PHPMPS_ROOT.'uc_client/client.php');
+        include_once(BIANMPS_ROOT.'uc_client/client.php');
     }
     $res = call_user_func_array($func, $params);
     set_error_handler('exception_handler');
@@ -1793,7 +1793,7 @@ function send_pwd_email($userid, $username, $email, $code)
 
 	$send_date = date('Y-m-d', time());
 	$content = "{$username}您好！<br><br>您已经进行了密码重置的操作，请点击以下链接(或者复制到您的浏览器):<br><br><a href=".$reset_email." target=\"_blank\">".$reset_email."</a><br><br>以确认您的新密码重置操作！<br><br>".$send_date;
-	require_once PHPMPS_ROOT.'include/mail.inc.php';
+	require_once BIANMPS_ROOT.'include/mail.inc.php';
     if (sendmail($email, $CFG['webname'].'-密码找回邮件', $content)) {
         return true;
     } else {
@@ -1920,14 +1920,14 @@ function delInfo($id)
 	
 	$thumb = $db->getAll("SELECT thumb FROM {$table}info WHERE id IN ($id)");
 	foreach((array)$thumb AS $val){
-		if($val != '' && is_file(PHPMPS_ROOT.$val['thumb'])){
-			@unlink(PHPMPS_ROOT.$val['thumb']);
+		if($val != '' && is_file(BIANMPS_ROOT.$val['thumb'])){
+			@unlink(BIANMPS_ROOT.$val['thumb']);
 		}
 	}
 	$image = $db->getAll("SELECT path FROM {$table}info_image WHERE infoid IN ($id)");
 	foreach((array)$image AS $val){
-		if($val != '' && is_file(PHPMPS_ROOT.$val['path'])){
-			@unlink(PHPMPS_ROOT.$val['path']);
+		if($val != '' && is_file(BIANMPS_ROOT.$val['path'])){
+			@unlink(BIANMPS_ROOT.$val['path']);
 		}
 	}
 	$db->query("DELETE FROM {$table}info_image WHERE infoid IN ($id)");
@@ -2159,7 +2159,7 @@ function censor($string) {
 function avatar($uid, $size='small', $returnsrc = FALSE) {
 	global $CFG;
 	
-	include PHPMPS_ROOT.'include/uc.inc.php';
+	include BIANMPS_ROOT.'include/uc.inc.php';
 	$size = in_array($size, array('big', 'middle', 'small')) ? $size : 'small';
 	$avatarfile = avatar_file($uid, $size);
 	return $returnsrc ? UC_API.'/data/avatar/'.$avatarfile : '<img src="'.UC_API.'/data/avatar/'.$avatarfile.'" onerror="this.onerror=null;this.src=\''.UC_API.'/images/noavatar_'.$size.'.gif\'">';

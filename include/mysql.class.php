@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('IN_PHPMPS')) {
+if (!defined('IN_BIANMPS')) {
     die('Access Denied');
 }
 
@@ -28,8 +28,8 @@ class mysql
     {
 		global $charset;
 
-        if (defined('PHPMPS_ROOT') && !$this->root_path) {
-            $this->root_path = PHPMPS_ROOT;
+        if (defined('BIANMPS_ROOT') && !$this->root_path) {
+            $this->root_path = BIANMPS_ROOT;
         }
         if ($quiet) {
             $this->connect($dbhost, $dbuser, $dbpw, $dbname, $pconnect, $quiet);

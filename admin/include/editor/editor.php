@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 class php_editor {
 
     var $id = '';

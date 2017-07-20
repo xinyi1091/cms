@@ -1,5 +1,5 @@
 <?php
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
 include_once dirname(__FILE__) . '/include/pay.fun.php';
 

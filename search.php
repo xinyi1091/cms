@@ -1,5 +1,5 @@
 <?php
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
 
 $keyword = !empty($_REQUEST['keywords']) ? trim($_REQUEST['keywords']) : '';

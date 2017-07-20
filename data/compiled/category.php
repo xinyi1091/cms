@@ -1,4 +1,4 @@
-<?php if(!defined('IN_PHPMPS'))die('Access Denied'); ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if(!defined('IN_BIANMPS'))die('Access Denied'); ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $charset;?>" />
@@ -10,15 +10,73 @@
 <link href="templates/<?php echo $CFG['tplname'];?>/style/category.css" type="text/css" rel="stylesheet" />
 <script src="js/common.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
-<script src="js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script> 
+<script src="js/jquery.lazyload.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="js/layer/layer.js"></script>
 <script type="text/javascript" charset="utf-8">
 $(function() {
 $("img").lazyload({
 effect : "fadeIn"
 });
 });
+        function layerOpen(isMemberSelf,jumpUrl,isMemberGoldEnough,infoid) {
+            var _userid = <?php echo $_userid;?>;
+var _token= '<?php echo $memberToken;?>';
+            if(_userid){
+if(isMemberSelf){
+                    window.open(jumpUrl);
+}else{
+//如果费用充足
+if(isMemberGoldEnough){
+                        layer.open({
+                            icon: 0,
+                            skin: 'layui-layer-lan',
+                            title:'消息',
+                            content: '<span style="color:red;" id="layerSpan">本类信息需付费，每条<i style="color:blue;"><?php echo $CFG["info_gold_diff"];?></i>信息币.继续浏览将付费(24小时内重复浏览不会重复计费)</span>',
+                            btn: ['确认', '取消'],
+                            yes: function(){
+                                $.ajax({
+                                        type:'post',
+                                        url:'category.php',
+                                        data:{act:"gold_diff",userid:_userid,token:_token,infoid:infoid},
+datatype:"json",
+                                        success:function (data) {
+                                            var data = JSON.parse(data);//ajax解析json要用eval();（此方法不推荐）或JSON.parse();（推荐）
+                                            if(data.error==200){
+                                                location.href=jumpUrl;
+}else{
+                                                $("#layerSpan").text(data.content);
+}
+                                        }
+});
+                            },
+                        });
+}else{
+                        layer.open({
+                            icon: 0,
+                            skin: 'layui-layer-lan',
+                            title:'消息',
+                            content: '<span style="color:red;">本类信息需付费，每条<i style="color:blue;"><?php echo $CFG["info_gold_diff"];?></i>信息币.但您的费用不足，确认将会跳转到购买信息币页面</span>',
+                            btn: ['确认', '取消'],
+                            yes: function(){
+                                location.href='member.php?act=gold'
+                            }
+                        });
+}
+}
+}else{
+                layer.open({
+                    icon: 0,
+                    skin: 'layui-layer-lan',
+                    title:'消息',
+                    content: '<span style="color:red;">本类信息需付费，每条<i style="color:blue;"><?php echo $CFG["info_gold_diff"];?></i>信息币.请先登录</span>',
+                    btn: ['登录', '取消'],
+                    yes: function(){
+                        location.href='member.php?act=login'
+                    }
+                });
+}
+        }
 </script>
-
 </head>
 <body class="home-page">
 
@@ -108,7 +166,7 @@ effect : "fadeIn"
 <td width="9%" rowspan="2" height="65" align="center" valign="middle"><?php if($val[thumb]) { ?><img data-original="<?php echo $val['thumb'];?>" src="js/grey.gif" style="width:60px;height:60px; border-radius:5%; border:#fff 3px solid" alt="<?php echo $val['title'];?>">
 <?php } else { ?><img  data-original="templates/<?php echo $CFG['tplname'];?>/images/nosmall.gif" src="js/grey.gif" style="width:60px;height:60px; border-radius:5%; border:#fff 3px solid" alt="<?php echo $val['title'];?>">
 <?php } ?></td>
-    <td width="72%" height="30"><a href="<?php echo $val['url'];?>" target="_blank"><?php echo $val['title'];?></a>&nbsp;&nbsp;<font color="#ff5500" style="font-size:12px;"><?php echo $val['areaname'];?></font>&nbsp;&nbsp;<font color="#007700"><?php echo $val['catname'];?></font></td>
+    <td width="72%" height="30"><?php if($val[needPay]) { ?><a href="javascript:void(0);"  onclick="layerOpen(<?php echo $val['isMemberSelf'];?>,'<?php echo $val['url'];?>',<?php echo $val['isMemberGoldEnough'];?>,<?php echo $val['id'];?>);"><?php echo $val['title'];?></a><?php } else { ?><a href="<?php echo $val['url'];?>" target="_blank"><?php echo $val['title'];?></a><?php } ?>&nbsp;&nbsp;<font color="#ff5500" style="font-size:12px;"><?php echo $val['areaname'];?></font>&nbsp;&nbsp;<font color="#007700"><?php echo $val['catname'];?></font></td>
 <td width="10%" align="center"><span style="color:#f80;font-size:12px;"><?php echo $val['postdate'];?></span></td>
 <td width="9%" align="center"><span style="color:#888;font-size:12px; padding-right:12px;">点击：<?php echo $val['click'];?></span></td>
     

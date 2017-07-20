@@ -3,7 +3,7 @@
 
 function tpl($file)
 {
-	$file = PHPMPS_ROOT.'wap/templates/'.$file.'.htm';
+	$file = BIANMPS_ROOT.'wap/templates/'.$file.'.htm';
     return $file;
 }
 

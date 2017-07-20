@@ -1,5 +1,5 @@
 <?php
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
 require dirname(__FILE__) . '/include/pay.fun.php';
 
@@ -64,7 +64,7 @@ switch($_REQUEST['act'])
 	break;
 
 	case 'ver':
-		require PHPMPS_ROOT . 'include/json.class.php';
+		require BIANMPS_ROOT . 'include/json.class.php';
 		$answer = iconvs('utf8', 'gbk', trim($_REQUEST['answer']));
 		$vid = intval($_REQUEST['vid']);
 		$ver = get_ver();

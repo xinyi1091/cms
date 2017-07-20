@@ -14,10 +14,10 @@
 	$cat_custom : 分类附加属性
 */
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
 //处理扣除信息币信息 added by bian
-require PHPMPS_ROOT . 'include/pay.fun.php';
+require BIANMPS_ROOT . 'include/pay.fun.php';
 $act = $_REQUEST['act'] ? trim($_REQUEST['act']) : '';
 if($act == "gold_diff"){
     $memberUserId = !empty($_REQUEST[userid])?intval($_REQUEST[userid]):0;

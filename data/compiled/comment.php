@@ -1,4 +1,4 @@
-<?php if(!defined('IN_PHPMPS'))die('Access Denied'); ?><script type="text/javascript">
+<?php if(!defined('IN_BIANMPS'))die('Access Denied'); ?><script type="text/javascript">
 function comment(){
 parent.document.getElementById("showcomment").innerHTML=document.getElementById("comment").innerHTML;
 }

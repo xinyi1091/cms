@@ -1,10 +1,10 @@
 <?php
 
-if (!defined('IN_PHPMPS')) {
+if (!defined('IN_BIANMPS')) {
     die('Access Denied');
 }
 
-define("IPDATA",PHPMPS_ROOT."include/ipdata/ipdata.dat");
+define("IPDATA",BIANMPS_ROOT."include/ipdata/ipdata.dat");
 
 class ip
 {

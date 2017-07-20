@@ -1,5 +1,5 @@
 <?php
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 
 $nav = get_nav(); //µ¼º½
 $cats_list  = get_cat_list();

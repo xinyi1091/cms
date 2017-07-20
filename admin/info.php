@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
 chkadmin('info');
 
@@ -155,7 +155,7 @@ switch ($_REQUEST['act'])
 			$thumb_name = $name.'_thumb'. '.' . end(explode('.', $_FILES['file'. $i]['name']));;
 			$name .= '.' . end(explode('.', $_FILES['file'. $i]['name']));
 			
-			$dir = PHPMPS_ROOT . 'data/infoimage/' . date('ymd');
+			$dir = BIANMPS_ROOT . 'data/infoimage/' . date('ymd');
 			if(!is_dir($dir))if(@mkdir(rtrim($dir,'/'), 0777))@chmod($dir, 0777);
 			$to = $dir.'/'. $name;
 			if(move_uploaded_file($_FILES['file'. $i]['tmp_name'], $to)) {
@@ -166,7 +166,7 @@ switch ($_REQUEST['act'])
 			if(empty($thumb)) {
 				if(!$do) {
 					$newimg ='data/infoimage/' . date('ymd').'/'.$thumb_name;
-					$thumb = CreateSmallImage( PHPMPS_ROOT.$image,  PHPMPS_ROOT.$newimg, 154, 134);
+					$thumb = CreateSmallImage( BIANMPS_ROOT.$image,  BIANMPS_ROOT.$newimg, 154, 134);
 					$sql = "update {$table}info set thumb='$newimg' where id='$id' ";
 					$db->query($sql);
 					$do = true;
@@ -241,15 +241,15 @@ switch ($_REQUEST['act'])
 				$sql = "SELECT thumb FROM {$table}info WHERE id in ($id)";
 				$thumb = $db->getAll($sql);
 				foreach((array)$thumb AS $val) {
-					if($val != '' && is_file(PHPMPS_ROOT.$val['thumb'])){
-						@unlink(PHPMPS_ROOT.$val['thumb']);
+					if($val != '' && is_file(BIANMPS_ROOT.$val['thumb'])){
+						@unlink(BIANMPS_ROOT.$val['thumb']);
 					}
 				}
 				$sql = "SELECT path FROM {$table}info_image WHERE infoid IN ($id)";
 				$images = $db->getAll($sql);
 				foreach((array)$images AS $val){
-					if($val != '' && is_file(PHPMPS_ROOT.$val['path'])){
-						@unlink(PHPMPS_ROOT.$val['path']);
+					if($val != '' && is_file(BIANMPS_ROOT.$val['path'])){
+						@unlink(BIANMPS_ROOT.$val['path']);
 					}
 				}
 				
@@ -274,8 +274,8 @@ switch ($_REQUEST['act'])
 		$imgid = $_REQUEST['imgid'];
 		$img = $db->getOne("select path from {$table}info_image where imgid='$imgid' ");
 
-		if($img != '' && is_file(PHPMPS_ROOT.$img)){
-			unlink(PHPMPS_ROOT.$img);
+		if($img != '' && is_file(BIANMPS_ROOT.$img)){
+			unlink(BIANMPS_ROOT.$img);
 		}
 		$sql = "delete from {$table}info_image where imgid='$imgid' ";
 		$db->query($sql);

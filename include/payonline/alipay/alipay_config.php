@@ -1,5 +1,5 @@
 <?php
-defined('IN_PHPMPS') or exit('Access Denied');
+defined('IN_BIANMPS') or exit('Access Denied');
 $partner = $partnerid;			//合作伙伴ID
 $security_code = $keycode;		//安全检验码
 $seller_email = $email;	        //卖家邮箱

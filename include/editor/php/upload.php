@@ -1,5 +1,5 @@
 <?php
-define("IN_PHPMPS", TRUE);
+define("IN_BIANMPS", TRUE);
 require_once 'JSON.php';
 //文件保存目录路径
 

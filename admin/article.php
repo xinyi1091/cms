@@ -1,8 +1,8 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
-require PHPMPS_ROOT . "include/editor/editor.php";
+require BIANMPS_ROOT . "include/editor/editor.php";
 
 chkadmin('article');
 

@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
 
 chkadmin('sitemap');
@@ -42,7 +42,7 @@ elseif ($_REQUEST['act']=='sitemap')
         $sm->add_item($smi);
     }
 
-    $sm_file = PHPMPS_ROOT.'sitemap.xml';
+    $sm_file = BIANMPS_ROOT.'sitemap.xml';
     if($sm->build($sm_file)) {
         show('生成sitemap成功。', 'sitemap.php');
     } else {

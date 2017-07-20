@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('IN_PHPMPS'))
+if (!defined('IN_BIANMPS'))
 {
     die('Access Denied');
 }
@@ -41,7 +41,7 @@ function admin_log($logtype)
  
 function kind_editor($editor_name,$value = '',$item='admin',$width='90%',$height='320')
 {
-	require_once PHPMPS_ROOT."include/editor/editor.php";
+	require_once BIANMPS_ROOT."include/editor/editor.php";
     $editor = new php_editor($editor_name);
     $editor->width = $width;
 	$editor->height = $height;
@@ -57,7 +57,7 @@ function kind_editor($editor_name,$value = '',$item='admin',$width='90%',$height
 function tpl($file)
 {
 	global $CFG;
-	$file = PHPMPS_ROOT.'admin/templates/'.$file.'.htm';
+	$file = BIANMPS_ROOT.'admin/templates/'.$file.'.htm';
     return $file;
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.inc.php';
 $cats  = get_cat_list();//所有分类	
 $comid = intval($_REQUEST['id']);

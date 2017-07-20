@@ -1,5 +1,5 @@
 <?php
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.inc.php';
     $catid = $_REQUEST['catid'] ? intval($_REQUEST['catid']) : '';
 	$areaid = $_REQUEST['area'] ? intval($_REQUEST['area']) : '';

@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
 $act = $_REQUEST['act'] ? $_REQUEST['act'] : 'list';
 if($act == 'list')

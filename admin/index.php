@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
 
 $_REQUEST['act'] = $_REQUEST['act'] ? trim($_REQUEST['act']) : 'index' ;
@@ -27,7 +27,7 @@ switch ($_REQUEST['act'])
 		$comment_num = $db->getOne("SELECT COUNT(*) FROM {$table}comment");
 		$com_num     = $db->getOne("SELECT COUNT(*) FROM {$table}com");
 		$article_num = $db->getOne("SELECT COUNT(*) FROM {$table}article");
-		include_once PHPMPS_ROOT . 'include/version.inc.php';
+		include_once BIANMPS_ROOT . 'include/version.inc.php';
 		if(file_exists('../install'))$install='1';
 
 		include tpl('right');
@@ -46,8 +46,8 @@ switch ($_REQUEST['act'])
 	break;
 
 	case 'test_mail':
-		include_once PHPMPS_ROOT . 'include/json.class.php';
-		include_once PHPMPS_ROOT . 'include/mail.inc.php';
+		include_once BIANMPS_ROOT . 'include/json.class.php';
+		include_once BIANMPS_ROOT . 'include/mail.inc.php';
 		$mailfrom = trim($_REQUEST['mailfrom']);
 		$mailto = trim($_REQUEST['mailto']);
 		if($mailfrom!='' && !is_email($mailfrom))exit;

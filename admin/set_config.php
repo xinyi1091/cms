@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
 
 chkadmin('config');
@@ -113,7 +113,7 @@ switch($_REQUEST['act'])
 //--------function--------
 function tpl_dir()
 {
-	$datadir = opendir(PHPMPS_ROOT . "templates");
+	$datadir = opendir(BIANMPS_ROOT . "templates");
 	while($file = readdir($datadir)) {
 		if($file!='.' && $file!='..' && $file!="index.htm"){
 			$files[] = $file;

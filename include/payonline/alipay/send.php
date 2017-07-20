@@ -1,7 +1,7 @@
 <?php
-defined('IN_PHPMPS') or exit('Access Denied');
-require_once PHPMPS_ROOT.'include/payonline/'.$paycenter.'/alipay_service.php';
-require_once PHPMPS_ROOT.'include/payonline/'.$paycenter.'/alipay_config.php';
+defined('IN_BIANMPS') or exit('Access Denied');
+require_once BIANMPS_ROOT.'include/payonline/'.$paycenter.'/alipay_service.php';
+require_once BIANMPS_ROOT.'include/payonline/'.$paycenter.'/alipay_config.php';
 
 $parameter = array(
 	'service' => 'create_direct_pay_by_user',	//交易类型，必填实物交易＝trade_create_by_buyer（需要填写物流） 虚拟物品交易＝create_digital_goods_trade_p

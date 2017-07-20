@@ -1,7 +1,7 @@
 <?php
-defined('IN_PHPMPS') or exit('Access Denied');
-require_once PHPMPS_ROOT.'include/payonline/'.$paycenter.'/alipay_notify.php';
-require_once PHPMPS_ROOT.'include/payonline/'.$paycenter.'/alipay_config.php';
+defined('IN_BIANMPS') or exit('Access Denied');
+require_once BIANMPS_ROOT.'include/payonline/'.$paycenter.'/alipay_notify.php';
+require_once BIANMPS_ROOT.'include/payonline/'.$paycenter.'/alipay_config.php';
 
 //接收返回的参数
 $pay['notify_type']=$notify_type;			//交易类型

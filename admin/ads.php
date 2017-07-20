@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
 
 chkadmin('ads');
@@ -70,7 +70,7 @@ switch ($_REQUEST['act'])
 					$name .= chr(mt_rand(97, 122));
 				}
 				$name .= '.' . end(explode('.', $_FILES['image']['name']));
-				$to = PHPMPS_ROOT . 'data/ads/' . $name;
+				$to = BIANMPS_ROOT . 'data/ads/' . $name;
 				if(move_uploaded_file($_FILES['image']['tmp_name'], $to))
 				{
 					$adscode = "data/ads/" . $name;
@@ -107,7 +107,7 @@ switch ($_REQUEST['act'])
 				}
 
 				$source_file = $_FILES['flash']['tmp_name'];
-				$target = PHPMPS_ROOT . 'data/ads/';
+				$target = BIANMPS_ROOT . 'data/ads/';
 				$file_name = $urlstr .'.swf';
 
 				if(move_uploaded_file($source_file, $target.$file_name))
@@ -198,13 +198,13 @@ switch ($_REQUEST['act'])
 					$name .= chr(mt_rand(97, 122));
 				}
 				$name .= '.' . end(explode('.', $_FILES['image']['name']));
-				$to = PHPMPS_ROOT . 'data/ads/' . $name;
+				$to = BIANMPS_ROOT . 'data/ads/' . $name;
 				if(move_uploaded_file($_FILES['image']['tmp_name'], $to))
 				{
 					if((strpos($adscode, 'http://') === false) && (strpos($adscode, 'https://') === false))
 					{
 						$img_name = basename($img);
-						@unlink(PHPMPS_ROOT.'data/ads/'.$img_name);
+						@unlink(BIANMPS_ROOT.'data/ads/'.$img_name);
 					}
 					$adscode = "data/ads/" . $name;
 				}
@@ -240,7 +240,7 @@ switch ($_REQUEST['act'])
 				}
 
 				$source_file = $_FILES['flash']['tmp_name'];
-				$target = PHPMPS_ROOT . 'data/ads/';
+				$target = BIANMPS_ROOT . 'data/ads/';
 				$file_name = $urlstr .'.swf';
 
 				if(move_uploaded_file($source_file, $target.$file_name))
@@ -248,7 +248,7 @@ switch ($_REQUEST['act'])
 					if((strpos($adscode, 'http://') === false) && (strpos($adscode, 'https://') === false))
 					{
 						$img_name = basename($img);
-						@unlink(PHPMPS_ROOT.'data/ads/'.$img_name);
+						@unlink(BIANMPS_ROOT.'data/ads/'.$img_name);
 					}
 					$adscode = $file_name;
 				}
@@ -299,7 +299,7 @@ switch ($_REQUEST['act'])
 		$ads = $db->getAll($sql);
 		
 		foreach((array)$ads as $ad) {
-			if($ads[adstype]==2 && $ads['adscode']!='' && is_file(PHPMPS_ROOT.'/data/ads/'.$ads['adscode'])) {
+			if($ads[adstype]==2 && $ads['adscode']!='' && is_file(BIANMPS_ROOT.'/data/ads/'.$ads['adscode'])) {
 				@unlink('../'.$ads['adscode']);
 			}
 		}

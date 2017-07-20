@@ -1,5 +1,5 @@
 <?php
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.inc.php';
 if(isset($_REQUEST['id']))$catid = intval($_REQUEST['id']);
 $cats44  = get_cat_list();//所有分类

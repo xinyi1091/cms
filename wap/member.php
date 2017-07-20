@@ -1,10 +1,10 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
-if($CFG['uc'])require PHPMPS_ROOT . 'include/uc.inc.php';
-require PHPMPS_ROOT . 'include/json.class.php';
-require PHPMPS_ROOT . 'include/pay.fun.php';
+if($CFG['uc'])require BIANMPS_ROOT . 'include/uc.inc.php';
+require BIANMPS_ROOT . 'include/json.class.php';
+require BIANMPS_ROOT . 'include/pay.fun.php';
 $act = $_REQUEST['act'] ? trim($_REQUEST['act']) : 'index';
 
 $not_login = array('login','act_login','register','act_register','logout',  'ajax', 'get_password', 'reset_password', 'send_pwd_email', 'email_edit_password','credit_rule','receive', 'check_info_gold', 'delinfo', 'editinfo', 'updateinfo', 'report', 'comment');
@@ -377,7 +377,7 @@ switch($act)
 			$trade_fee = 0;
 		}
 		$total_amount = $amount + $trade_fee;
-		require PHPMPS_ROOT.'include/payonline/'.$paycenter.'/confirm.php';
+		require BIANMPS_ROOT.'include/payonline/'.$paycenter.'/confirm.php';
 
 		$seo['title'] = '在线支付-确认订单';
 		include template('payconfirm');
@@ -406,7 +406,7 @@ switch($act)
 		$db->query("INSERT INTO {$table}pay_online (`paycenter`,`username`,`orderid`,`moneytype`,`amount`,`trade_fee`,`contactname`,`telephone`,`email`,`sendtime`,`ip`) VALUES('$paycenter','$_username','$orderid','$moneytype','$amount','$trade_fee','$contactname','$telephone','$email','$time','$ip')");
 
 		$amount = $amount + $trade_fee;
-		require PHPMPS_ROOT.'include/payonline/'.$paycenter.'/send.php';
+		require BIANMPS_ROOT.'include/payonline/'.$paycenter.'/send.php';
 	break;
 
 	case 'receive':
@@ -414,7 +414,7 @@ switch($act)
 		$payonline_setting = get_pay_setting();
 		array_key_exists($paycenter, $payonline_setting) or showmsg('支付错误');
 		@extract($payonline_setting[$paycenter]);
-		require PHPMPS_ROOT.'include/payonline/'.$paycenter.'/receive.php';
+		require BIANMPS_ROOT.'include/payonline/'.$paycenter.'/receive.php';
 		
 		$total_amount = $amount + $trade_fee;
 		$seo['title'] = '支付返回信息';
@@ -483,7 +483,7 @@ switch($act)
 
 		if ($user_info && $user_info['email'] == $email) {
 			$code = md5($user_info['userid'] . $CFG['crypt'] . $user_info['registertime']);
-			include PHPMPS_ROOT.'include/mail.inc.php';
+			include BIANMPS_ROOT.'include/mail.inc.php';
 			if (send_pwd_email($user_info['userid'], $username, $email, $code)) {
 				showmsg('发送成功' , 'index.php');
 			} else {
@@ -799,7 +799,7 @@ switch($act)
 	break;
 	
 	case 'send_info_mail':
-		include PHPMPS_ROOT.'include/mail.inc.php';
+		include BIANMPS_ROOT.'include/mail.inc.php';
 		extract($_REQUEST);
 		$email = decrypt($email, $CFG['crypt']);
 		$content = $CFG['webname'].'代发,请勿回复。<br />'.$content;
@@ -819,7 +819,7 @@ switch($act)
 			header("Location: ./\n");
 			exit;
 		}
-		require_once PHPMPS_ROOT . 'include/ip.class.php';
+		require_once BIANMPS_ROOT . 'include/ip.class.php';
 		$ip = get_ip();
 		$cha = new ip();
 		$address = $cha->getaddress($ip);
@@ -922,13 +922,13 @@ switch($act)
 				$sql = "SELECT thumb FROM {$table}com WHERE comid IN ($comid)";
 				$image = $db->getAll($sql);
 				foreach((array)$image AS $val) {
-					if($val['thumb'] != '' && is_file(PHPMPS_ROOT.$val['thumb'])) {
-						@unlink(PHPMPS_ROOT . $val['thumb']);
+					if($val['thumb'] != '' && is_file(BIANMPS_ROOT.$val['thumb'])) {
+						@unlink(BIANMPS_ROOT . $val['thumb']);
 					}
 				}
 
 				$thumb_name = $comid.'_thumb'. '.' . end(explode('.', $_FILES['thumb']['name']));
-				$dir = PHPMPS_ROOT . 'data/com/thumb/';
+				$dir = BIANMPS_ROOT . 'data/com/thumb/';
 				if(!is_dir($dir)) {
 					if(@mkdir(rtrim($dir,'/'), 0777))@chmod($dir, 0777);
 				}
@@ -968,15 +968,15 @@ switch($act)
 		
 		$sql = "SELECT thumb FROM {$table}com WHERE comid IN ($comid)";
 		$image = $db->getOne($sql);
-		if($image != '' && is_file(PHPMPS_ROOT.$image)) {
-			@unlink(PHPMPS_ROOT.$image);
+		if($image != '' && is_file(BIANMPS_ROOT.$image)) {
+			@unlink(BIANMPS_ROOT.$image);
 		}
 
 		$sql = "SELECT path FROM {$table}com_image WHERE comid IN ($comid)";
 		$image = $db->getAll($sql);
 		foreach((array)$image AS $val) {
-			if($val[path] != '' && is_file(PHPMPS_ROOT.$val[path])) {
-				@unlink(PHPMPS_ROOT.$val[path]);
+			if($val[path] != '' && is_file(BIANMPS_ROOT.$val[path])) {
+				@unlink(BIANMPS_ROOT.$val[path]);
 			}
 		}
 
@@ -988,7 +988,7 @@ switch($act)
 
 	case 'avatar':
 		if(!$CFG['uc']) showmsg('系统没有整合Ucenter，不能使用此功能');
-		include PHPMPS_ROOT.'include/uc.inc.php';
+		include BIANMPS_ROOT.'include/uc.inc.php';
 		if(!$_userid) showmsg('请先登录', 'member.php?act=login');
 
 		$uid = $db->getone("select uid from {$table}member where userid='$_userid' ");
@@ -1009,7 +1009,7 @@ switch($act)
 			$content = "{$username}您好！<br><br>请点击以下链接(或者复制到您的浏览器):<br><br><a href=".$reset_email." target=\"_blank\">".$reset_email."</a><br><br>以进行您的邮件验证！<br><br>".$send_date;
 
 			$code = md5($user_info['userid'] . $CFG['crypt'] . $user_info['registertime']);
-			include PHPMPS_ROOT.'include/mail.inc.php';
+			include BIANMPS_ROOT.'include/mail.inc.php';
 			if (sendmail($email, $CFG['webname'].'-邮件验证', $content)) {
 				showmsg('发送成功,请登录邮箱进行验证' , 'member.php?act=send_check_email');
 			} else {

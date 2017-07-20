@@ -1,5 +1,5 @@
 <?php
-if(!defined('IN_PHPMPS'))
+if(!defined('IN_BIANMPS'))
 {
 	die('Access Denied');
 }
@@ -23,7 +23,7 @@ if($CFG['sendmailtype'] == 'mail')
 }
 elseif($CFG['smtpuser'])
 {
-	require_once PHPMPS_ROOT.'include/smtp.class.php';
+	require_once BIANMPS_ROOT.'include/smtp.class.php';
 
 	$smtp = new smtp($CFG['smtphost'], $CFG['smtpport']?$CFG['smtpport']:'25', TRUE, $CFG['smtpuser'], $CFG['smtppass']);
 	$smtp->debug = FALSE;

@@ -1,6 +1,6 @@
 <?php
 
-if(!defined('IN_PHPMPS'))
+if(!defined('IN_BIANMPS'))
 {
 	die('Access Denied');
 }

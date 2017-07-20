@@ -1,5 +1,5 @@
 <?php
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 ob_start();
 header("Cache-control: private");
 require dirname(__FILE__) . '/include/common.inc.php';

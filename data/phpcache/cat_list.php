@@ -639,11 +639,5 @@ $data = array (
       ),
     ),
   ),
-  129 => 
-  array (
-    'catid' => '129',
-    'catname' => '²âÊÔ2',
-    'caturl' => 'category.php?id=129',
-  ),
 );
 ?>

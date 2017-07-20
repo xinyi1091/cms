@@ -1,5 +1,5 @@
 <?php
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
 
 $infoid = empty($_REQUEST['infoid']) ? 0 : intval($_REQUEST['infoid']);

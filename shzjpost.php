@@ -1,9 +1,9 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
-require PHPMPS_ROOT . 'include/json.class.php';
-require PHPMPS_ROOT . 'include/pay.fun.php';
+require BIANMPS_ROOT . 'include/json.class.php';
+require BIANMPS_ROOT . 'include/pay.fun.php';
 $act = $_REQUEST['act'] ? trim($_REQUEST['act']) : 'select' ;
 $ip = get_ip();
 $postarea = getPostArea($ip);
@@ -165,7 +165,7 @@ elseif($act == 'postok')
 		$thumb_name = $name.'_thumb'. '.' . end(explode('.', $val['name']));
 		$name .= '.' . end(explode('.', $val['name']));
 		
-		$dir = PHPMPS_ROOT . 'data/infoimage/' . date('ymd');
+		$dir = BIANMPS_ROOT . 'data/infoimage/' . date('ymd');
 		if(!is_dir($dir)) {
 			if(@mkdir(rtrim($dir,'/'), 0777))@chmod($dir, 0777);
 		}
@@ -173,13 +173,13 @@ elseif($act == 'postok')
 
 		if(move_uploaded_file($val['tmp_name'], $to)) {
 			$image = 'data/infoimage/' . date('ymd').'/'. $name;
-			@chmod(PHPMPS_ROOT.$image, 0777);
+			@chmod(BIANMPS_ROOT.$image, 0777);
 			$db->query("INSERT INTO {$table}info_image (infoid,path) VALUES ('$id','$image')");
 		}
 		if(!$do) {
 			$thumbimg = 'data/infoimage/' . date('ymd').'/'.$thumb_name;
 			$thumb = CreateSmallImage( $image, $thumbimg, 154, 134);
-			@chmod(PHPMPS_ROOT.$thumbimg, 0777);
+			@chmod(BIANMPS_ROOT.$thumbimg, 0777);
 			$db->query("UPDATE {$table}info SET thumb='$thumbimg' WHERE id='$id' ");
 			$do = true;
 		}

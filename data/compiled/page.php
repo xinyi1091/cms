@@ -1,4 +1,4 @@
-<?php if(!defined('IN_PHPMPS'))die('Access Denied'); ?><link href="templates/<?php echo $CFG['tplname'];?>/style/style.css" type="text/css" rel="stylesheet" />
+<?php if(!defined('IN_BIANMPS'))die('Access Denied'); ?><link href="templates/<?php echo $CFG['tplname'];?>/style/style.css" type="text/css" rel="stylesheet" />
 <div style="overflow:hidden;zoom:1">
 <div style="float:left;">
 <span class="nolk">共<?php echo $pager['count'];?>记录&nbsp;&nbsp;</span><span class="nolk">当前<?php echo $pager['page'];?>/<?php echo $pager['page_count'];?>页</span>

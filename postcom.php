@@ -1,9 +1,9 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
 require dirname(__FILE__) . '/include/com.fun.php';
-require PHPMPS_ROOT . 'include/json.class.php';
+require BIANMPS_ROOT . 'include/json.class.php';
 
 $_REQUEST['act'] = $_REQUEST['act'] ? trim($_REQUEST['act']) : 'select' ;
 
@@ -76,7 +76,7 @@ elseif($_REQUEST['act'] == 'postok')
 	if(checkupfile($_FILES['thumb']['tmp_name']) && $_FILES['thumb']['tmp_name'] != 'none' && $_FILES['thumb']['tmp_name'] && $_FILES['thumb']['name'] && $_FILES['thumb']['size']<'523298' && in_array($exname,$alled)) {
 
 		$thumb_name = $id.'_thumb'. '.' . end(explode('.', $_FILES['thumb']['name']));
-		$dir = PHPMPS_ROOT . 'data/com/thumb';
+		$dir = BIANMPS_ROOT . 'data/com/thumb';
 		if(!is_dir($dir)) {
 			if(@mkdir(rtrim($dir,'/'), 0777))@chmod($dir, 0777);
 		}
@@ -97,7 +97,7 @@ elseif($_REQUEST['act'] == 'postok')
 		$name = date('ymdhis');
 		for($a = 0;$a < 6;$a++){ $name .= chr(mt_rand(97, 122));}
 		$name .= '.' . end(explode('.', $_FILES['file'. $i]['name']));
-		$dir = PHPMPS_ROOT . 'data/com/' . date('ymd');
+		$dir = BIANMPS_ROOT . 'data/com/' . date('ymd');
 		if(!is_dir($dir)) {
 			if(@mkdir(rtrim($dir,'/'), 0777))@chmod($dir, 0777);
 		}

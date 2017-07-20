@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
 require dirname(__FILE__) . '/include/com.fun.php';
 $act = $_REQUEST['act'] ? $_REQUEST['act'] : 'list' ;

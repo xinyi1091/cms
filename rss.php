@@ -1,8 +1,8 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require dirname(__FILE__) . '/include/common.php';
-require PHPMPS_ROOT . '/include/rss.class.php';
+require BIANMPS_ROOT . '/include/rss.class.php';
 
 $cat  = isset($_REQUEST['catid']) ? ' AND i.catid in (' . get_cat_children(intval($_REQUEST['catid'])).')' : '';
 $uri  = PHPMPS_PATH;

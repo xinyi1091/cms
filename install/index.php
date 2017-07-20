@@ -1,20 +1,16 @@
 <?php
-
 //安装文件
+define('IN_BIANMPS', true);
 
+$charset = 'gb2312';//字符集
 
-
-define('IN_PHPMPS', true);
-
-$charset = 'gb2312';
-
-$dbcharset = 'gbk';
+$dbcharset = 'gbk';//数据库字符集
 
 require_once 'common.php';
 
 
 
-if(file_exists(PHPMPS_ROOT . 'data/install.lock')) {
+if(file_exists(BIANMPS_ROOT . 'data/install.lock')) {
 
 	die('系统已安装，如果要重新安装，请删除 data/install.lock 这个文件。');
 
@@ -50,7 +46,7 @@ switch($_REQUEST['step'])
 
 			$message[$key]['name'] = $dir;
 
-			if(!is_writable(PHPMPS_ROOT . $dir))
+			if(!is_writable(BIANMPS_ROOT . $dir))
 
 			{
 
@@ -196,7 +192,7 @@ switch($_REQUEST['step'])
 
 
 
-		$file = @fopen(PHPMPS_ROOT . 'data/config.php', 'wb+');
+		$file = @fopen(BIANMPS_ROOT . 'data/config.php', 'wb+');
 
 		if(!$file)
 
@@ -218,9 +214,9 @@ switch($_REQUEST['step'])
 
 
 
-		require PHPMPS_ROOT . 'data/config.php';
+		require BIANMPS_ROOT . 'data/config.php';
 
-		require PHPMPS_ROOT . 'include/mysql.class.php';
+		require BIANMPS_ROOT . 'include/mysql.class.php';
 
 		$db = new mysql($db_host, $db_user, $db_pass, $db_name, $dbcharset);
 

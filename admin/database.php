@@ -1,8 +1,8 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
-require_once PHPMPS_ROOT . '/include/version.inc.php';
+require_once BIANMPS_ROOT . '/include/version.inc.php';
 @set_time_limit(0);
 
 chkadmin('database');
@@ -25,7 +25,7 @@ switch($_REQUEST['act'])
 			{
 				if(!isset($tables) || !is_array($tables)) showmessage('没有选择数据表');
 				$random = mt_rand(1000, 9999);
-				$cache_file = PHPMPS_ROOT . 'data/bakup/tables.php';
+				$cache_file = BIANMPS_ROOT . 'data/bakup/tables.php';
 				$content = "<?php\r\n";
 				$content .= "\$data = " . var_export($tables, true) . ";\r\n";
 				$content .= "?>";
@@ -34,7 +34,7 @@ switch($_REQUEST['act'])
 			else
 			{
 				$random = $_REQUEST['random'];
-				include PHPMPS_ROOT . 'data/bakup/tables.php';
+				include BIANMPS_ROOT . 'data/bakup/tables.php';
 				$tables = $data;
 			    if(!$tables) showmessage('没有选择数据表');
 			}
@@ -77,9 +77,9 @@ switch($_REQUEST['act'])
 				$filename = date('Ymd').'_'.$random.'_'.$fileid.'.sql';
 				$fileid++;
 
-				$bakfile = PHPMPS_ROOT.'/data/bakup/'.$filename;
+				$bakfile = BIANMPS_ROOT.'/data/bakup/'.$filename;
 
-				if(!is_writable(PHPMPS_ROOT.'/data/bakup/')) showmessage('备份文件无法保存到服务器');
+				if(!is_writable(BIANMPS_ROOT.'/data/bakup/')) showmessage('备份文件无法保存到服务器');
 
 				file_put_contents($bakfile, $sqldump);
 				@chmod($bakfile, 0777);
@@ -88,7 +88,7 @@ switch($_REQUEST['act'])
 			}
 			else
 			{
-				@unlink(PHPMPS_ROOT . 'data/bakup/tables.php');
+				@unlink(BIANMPS_ROOT . 'data/bakup/tables.php');
 				show('数据备份成功');
 			}
 		}
@@ -136,7 +136,7 @@ switch($_REQUEST['act'])
 			$filename = addslashes_deep($_GET['filename']);
 			if($filename && fileext($filename)=='sql')
 			{
-				$filepath = PHPMPS_ROOT.'data/bakup/'.$filename;
+				$filepath = BIANMPS_ROOT.'data/bakup/'.$filename;
 				if(!file_exists($filepath)) show(" $filepath 不存在");
 				$sql = file_get_contents($filepath);
 				sql_execute($sql);
@@ -146,7 +146,7 @@ switch($_REQUEST['act'])
 			{
 				$fileid = $_REQUEST['fileid'] ? $_REQUEST['fileid'] : 1;
 				$filename = $_REQUEST['pre'].$fileid.'.sql';
-				$filepath = PHPMPS_ROOT.'data/bakup/'.$filename;
+				$filepath = BIANMPS_ROOT.'data/bakup/'.$filename;
 				
 				if(file_exists($filepath))
 				{
@@ -163,7 +163,7 @@ switch($_REQUEST['act'])
 		}
 		else
 		{
-			$sqlfiles = glob(PHPMPS_ROOT.'data/bakup/*.sql');
+			$sqlfiles = glob(BIANMPS_ROOT.'data/bakup/*.sql');
 			
 			if(is_array($sqlfiles))
 			{

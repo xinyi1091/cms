@@ -1,5 +1,5 @@
 <?php
-defined('IN_PHPMPS') or exit('Access Denied');
+defined('IN_BIANMPS') or exit('Access Denied');
 class alipay_service
 {
 	var $gateway = 'https://www.alipay.com/cooperate/gateway.do?';         //Ö§¸¶½Ó¿Ú

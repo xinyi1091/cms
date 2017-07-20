@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require 'include/common.php';
 require '../include/com.fun.php';
 
@@ -139,8 +139,8 @@ switch ($_REQUEST['act'])
 				$sql = "SELECT thumb FROM {$table}com WHERE comid IN ($id)";
 				$image = $db->getAll($sql);
 				foreach((array)$image AS $val) {
-					if($val[thumb] != '' && is_file(PHPMPS_ROOT.$val[thumb])) {
-						@unlink(PHPMPS_ROOT.$val[thumb]);
+					if($val[thumb] != '' && is_file(BIANMPS_ROOT.$val[thumb])) {
+						@unlink(BIANMPS_ROOT.$val[thumb]);
 					}
 				}
 				$sql = "DELETE FROM {$table}com WHERE comid in ($id)";

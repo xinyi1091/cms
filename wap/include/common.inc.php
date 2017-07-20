@@ -1,6 +1,6 @@
 <?php
 
-if (!defined('IN_PHPMPS'))
+if (!defined('IN_BIANMPS'))
 {
     die('Access Denied');
 }
@@ -9,11 +9,11 @@ if (!defined('IN_PHPMPS'))
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 
 /* 取得根目录 */
-define('PHPMPS_ROOT', str_replace('wap/include/common.inc.php', '', str_replace('\\', '/', __FILE__)));
-require PHPMPS_ROOT . 'data/config.php';
-require PHPMPS_ROOT . 'include/com.fun.php';
-require PHPMPS_ROOT . 'include/global.fun.php';
-require PHPMPS_ROOT . 'wap/include/wap.fun.php';
+define('BIANMPS_ROOT', str_replace('wap/include/common.inc.php', '', str_replace('\\', '/', __FILE__)));
+require BIANMPS_ROOT . 'data/config.php';
+require BIANMPS_ROOT . 'include/com.fun.php';
+require BIANMPS_ROOT . 'include/global.fun.php';
+require BIANMPS_ROOT . 'wap/include/wap.fun.php';
 
 @set_magic_quotes_runtime(0);
 @ini_set('session.auto_start', 0);
@@ -51,7 +51,7 @@ header('Content-type: text/html; charset=gb2312');
 	}
 	return $option;
 }
-require PHPMPS_ROOT . 'include/mysql.class.php';
+require BIANMPS_ROOT . 'include/mysql.class.php';
 $db = new mysql($db_host, $db_user, $db_pass, $db_name, '1');
 $db_host = $db_user = $db_pass = $db_name = NULL;
 

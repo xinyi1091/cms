@@ -1,8 +1,8 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
-require_once PHPMPS_ROOT . 'include/json.class.php';
+require_once BIANMPS_ROOT . 'include/json.class.php';
 
 chkadmin('replace');
 

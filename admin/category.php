@@ -1,6 +1,6 @@
 <?php
 
-define('IN_PHPMPS', true);
+define('IN_BIANMPS', true);
 require_once dirname(__FILE__) . '/include/common.php';
 
 chkadmin('category');
@@ -124,7 +124,7 @@ function showtpl($type = 'category', $name = 'tplname', $templateid = 0)
 {
 	global $CFG;
 
-    $templatedir = PHPMPS_ROOT."/templates/".$CFG['tplname']."/";
+    $templatedir = BIANMPS_ROOT."/templates/".$CFG['tplname']."/";
     $content = "";
 	$files = glob($templatedir."/*.htm");
 
